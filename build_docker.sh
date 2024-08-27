@@ -1,0 +1,1 @@
+docker build --build-arg NEXT_PUBLIC_API_URL=https://www.gyanbyte.com/gapi --build-arg NEXTAUTH_URL=https://www.gyanbyte.com --build-arg RAZORPAY_KEY=rzp_test_abcdefgh -t sipndrink_ui:latest .
