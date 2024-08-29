@@ -14,7 +14,8 @@ function Welcome(props) {
             <div className="centerbtn">
                 <a className="btn btn-next" 
                     onClick={props.nextStep} 
-                    isdisabled={props.step!==1}>Next</a>
+                    // isdisabled={props.step!==1}
+                    >Next</a>
             </div>
         </div>
     );

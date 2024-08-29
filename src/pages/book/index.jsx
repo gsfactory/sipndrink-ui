@@ -6,10 +6,10 @@ import api_client from "@/components/api/api_client";
 const Test = (props) => {
     console.log('booking data', props);
     return (
-    <div class="welcomearea">
-        <div class="row">
-            <div class="col-md-8">
-                <div class="welcometext">
+    <div className="welcomearea">
+        <div className="row">
+            <div className="col-md-8">
+                <div className="welcometext">
 
                     <SimpleGrid p="10px" spacing={4} minChildWidth="350px">
                         {props.theatres.data.map(theater => (

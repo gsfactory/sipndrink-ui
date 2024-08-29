@@ -7,12 +7,12 @@ function Cakes(props) {
     };
 
     return ( 
-        <div class="form-step celebra cakes active">
-        <h3> Cakes <span><input type="checkbox" id="switch" /><label for="switch">&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label></span></h3>
-        <div class="slider_area left-section ">
-            <div class="row box-container">
+        <div className="form-step celebra cakes active">
+        <h3> Cakes <span><input type="checkbox" id="switch" /><label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</label></span></h3>
+        <div className="slider_area left-section ">
+            <div className="row box-container">
              {props.serviceMap['cake'].map(cake => (
-                    <div class="col-md-4">
+                    <div className="col-md-4" key={cake.id}>
                         <div className={`imagearea ${props.cakeIds.includes(cake.id) ? 'active' : ''}`}>
                         <img 
                             onClick={() => handleToggle(cake.id)}
@@ -23,11 +23,11 @@ function Cakes(props) {
                     </div>
                 ))}
 
-                <p class="note-detls">Note: Decorations are not customizable. Please select predefined add-ons in the next windows.</p>
+                <p className="note-detls">Note: Decorations are not customizable. Please select predefined add-ons in the next windows.</p>
              </div>
          </div>
-         <div class="btn-group">
-            <a class="btn btn-prev"
+         <div className="btn-group">
+            <a className="btn btn-prev"
                 onClick={props.prevStep}>Previous</a>
             <a className="btn btn-next" 
                 onClick={props.nextStep}>Next</a>

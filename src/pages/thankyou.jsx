@@ -32,16 +32,16 @@ function ThankYou(props) {
       </Head>
 
     <main id="main">
-    <section id="stats-counter " class="stats-counter thankyou">
-      <div class="container" data-aos="fade-up">
-        <div class="section-header">
+    <section id="stats-counter " className="stats-counter thankyou">
+      <div className="container" data-aos="fade-up">
+        <div className="section-header">
           <h2>Thank You</h2>
           <p>
           Hi {data.booking.customer_name}, Your booking is confirmed on {data.booking.date}.
           <br/>Checkout the details
           </p>
           
-          <table class="table table-striped">
+          <table className="table table-striped">
             <thead>
               <tr>
                 <th>Description</th>

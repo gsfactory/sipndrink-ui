@@ -24,7 +24,7 @@ function Celebrations(props) {
                     <div className="slider_area left-section ">
                     <div className="row box-container">
                         {props.serviceMap['decorations'].map(decoration => (
-                            <div className="col-md-6">
+                            <div className="col-md-6" key={decoration.id}>
                                 <div className={`imagearea ${props.decorationIds.includes(decoration.id) ? 'active' : ''}`}>
                                     <img 
                                     onClick={() => handleToggle(decoration.id)}

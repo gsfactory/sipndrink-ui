@@ -136,7 +136,7 @@ function BaseModal(props) {
             <div className="modal-body">
               <div className="welcomearea">
                 <div className="row">
-                <div class="col-md-9 col-sm-12">
+                <div className="col-md-9 col-sm-12">
                     <div className="welcometext">
                   <form action="" method="post" className="form">       
 
@@ -257,7 +257,7 @@ function BaseModal(props) {
                     </div>
                     </div>
 
-                    <div class="col-md-3 col-sm-12">
+                    <div className="col-md-3 col-sm-12">
                         <PaymentSummary 
                             pricing={pricing}
                             theater={theater}

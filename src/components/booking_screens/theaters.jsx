@@ -29,7 +29,7 @@ function Theaters(props) {
                 <div className="box-container row">
                  
                  {props.theaters.map(theater => (
-                        <div className="col-md-4">
+                        <div className="col-md-4" key={theater.id}>
                             <div 
                                 className={`box ${props.theater?.id === theater.id ? 'active' : ''}`} >
 

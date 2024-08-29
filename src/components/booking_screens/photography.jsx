@@ -6,15 +6,15 @@ function Photography(props) {
         props.handleItemSelection(id, 'photography', false);
     };
     return (  
-        <div class="form-step celebra addonssec active">
+        <div className="form-step celebra addonssec active">
         <h3> Photography <span>(soft copies only)</span> <spam>Total: ₹0000</spam></h3>
-         <div class="slider_area">
+         <div className="slider_area">
             <h3>Memories</h3>
-            <div class="slider_area left-section ">
-            <div class="row box-container">
+            <div className="slider_area left-section ">
+            <div className="row box-container">
                  
              {props.serviceMap['photography'].map(decoration => (
-                    <div class="col-md-4">
+                    <div className="col-md-4" key={decoration.id}>
                         <div className={`imagearea ${props.photoIds.includes(decoration.id) ? 'active' : ''}`}>
                             <img 
                             onClick={() => handleToggle(decoration.id)}
@@ -25,8 +25,8 @@ function Photography(props) {
                 </div>
              </div>
          </div>
-         <div class="btn-group">
-            <a class="btn btn-prev"
+         <div className="btn-group">
+            <a className="btn btn-prev"
                 onClick={props.prevStep}>Previous</a>
             <a className="btn btn-next" 
                 onClick={props.nextStep}>Next</a>

@@ -137,17 +137,17 @@ function BookModal(props) {
                     </div>
                     </div>
 
-                    <div class="col-md-4">
-                        <div class="rigrt-boxwelcome">
+                    <div className="col-md-4">
+                        <div className="rigrt-boxwelcome">
                         <h3>Sip N Screen</h3>
-                        <ul><li><i class="fa fa-phone"></i> +91 1234567890</li>
-                            <li><i class="fa fa-map-marker"></i> Hyderabad, Lorem Ipsum is simply dummy text.</li>
-                            <li><i class="fa fa-video-camera"></i> Couple Theater</li>
+                        <ul><li><i className="fa fa-phone"></i> +91 1234567890</li>
+                            <li><i className="fa fa-map-marker"></i> Hyderabad, Lorem Ipsum is simply dummy text.</li>
+                            <li><i className="fa fa-video-camera"></i> Couple Theater</li>
                             <li><i></i></li>
                         </ul>
                         <h3>Add-ons</h3>
-                        <ul><li><i class="fa fa-certificate" aria-hidden="true"></i> Fog Effect</li></ul>
-                        <div class="total_pp"><h6>Total: 00000</h6></div>
+                        <ul><li><i className="fa fa-certificate" aria-hidden="true"></i> Fog Effect</li></ul>
+                        <div className="total_pp"><h6>Total: 00000</h6></div>
                         </div>
                     </div>
 

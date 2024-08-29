@@ -30,7 +30,7 @@ function PaymentSummary(props) {
                     }
 
                     if (desigPropsRef.includes(val.id)) {
-                      return <li><i className="fa fa-certificate" aria-hidden="true"></i> {val.name}</li>
+                      return <li key={key}><i className="fa fa-certificate" aria-hidden="true"></i> {val.name}</li>
                     }
                   });
                 })}
