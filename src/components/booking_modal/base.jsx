@@ -1,5 +1,5 @@
 import Welcome from "@/components/booking_screens/welcome";
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import {getCurrentDate} from '@/components/utils/utils';
 import PaymentSummary from "../booking_screens/payment_summary";
 import Theaters from '../booking_screens/theaters';
@@ -14,15 +14,13 @@ import CustomerDetailsFinalScreen from "../booking_screens/customer_details_fina
 function BaseModal(props) {
     // console.log('basemodal', props);
 
-    // serviceMap={props.serviceMap}
-    // theatres={theatres}
+    const modalRef = useRef(null);
+
     const [step, setStep] = useState(1);
     const [theater, setTheater] = useState(null);
     const [theaterTimeSlots, setTheaterTimeSlots] = useState(null);
-    const [basePrice, setBasePrice] = useState(0);//props.data.pricing_per_slot);
     const [pricing, setPricing] = useState(0);//props.data.pricing_per_slot);
 
-    const [bookingDetail, setBookingDetail] = useState(null);
     const [bookingDate, setBookingDate] = useState(getCurrentDate());
     const [timeSlot, setTimeSlot] = useState(null);
     const [numPersons, setNumPersons] = useState(2);
@@ -37,10 +35,46 @@ function BaseModal(props) {
     const [mobile, setMobile] = useState("");
     const [email, setEmail] = useState("");
 
-    useEffect(() => {
-        updatePricing();
-    }, [decorationIds, cakeIds, extraDecoIds, flowerIds, photoIds, theater, numPersons]);
+    const [firstName, setFirstName] = useState("");
+    const [secondName, setSecondName] = useState("");
 
+    useEffect(() => {
+        console.log("useEffect");
+        updatePricing();
+
+        // const handleModalClose = () => {
+        //     console.log("Modal close handler");
+        //     // Clear your data here
+        //     if (modalRef.current) {
+        //         // const inputs = modalRef.current.querySelectorAll('input, textarea, select');
+        //         // inputs.forEach(input => input.value = '');
+        //         setStep(1);
+        //         setTheater(null);
+        //         setTheaterTimeSlots(null);
+        //         setPricing(0);
+        //         setBookingDate(getCurrentDate());
+        //         setTimeSlot(null);
+        //         setNumPersons(2);
+        //         setDecorationIds([]);
+        //         setCakeIds([]);
+        //         setExtraDecoIds([]);
+        //         setFlowerIds([]);
+        //         setPhotoIds([]);
+        //         setName("");
+        //         setMobile("");
+        //         setEmail("");
+        //     }
+        // };
+
+        // console.log("Setting modal close handler...");
+        // const modalElement = modalRef.current;
+        // modalElement.addEventListener('hidden.bs.modal', handleModalClose);
+
+        // return () => {
+        //     console.log("removing modal close handler...");
+        //     modalElement.removeEventListener('hidden.bs.modal', handleModalClose);
+        // };
+    }, [decorationIds, cakeIds, extraDecoIds, flowerIds, photoIds, theater, numPersons, timeSlot]);
 
     const nextStep = () => {
         setStep(prev => prev + 1)
@@ -88,7 +122,14 @@ function BaseModal(props) {
     };
 
     const updatePricing = () => {
-        let totalPrice = 0;//basePrice;
+        //set timeslot if null
+        if (timeSlot === null) {
+            if (theaterTimeSlots != null && theaterTimeSlots.length > 0) {
+                setTimeSlot(theaterTimeSlots[0].id);
+            }
+        }
+
+        let totalPrice = 0;
         if (theater) {
             // console.log(theater);
             totalPrice = theater.attributes.pricing_per_slot;
@@ -127,7 +168,7 @@ function BaseModal(props) {
     }
 
     return ( 
-        <div id="myModal" className="modal fade" role="dialog">
+        <div id="myModal" className="modal fade" role="dialog" ref={modalRef}>
         <div className="modal-dialog">
           <div className="modal-content">
             <div className="modal-header">
@@ -170,6 +211,7 @@ function BaseModal(props) {
                             theaterTimeSlots={theaterTimeSlots}
                             timeSlot={timeSlot}
                             setTimeSlot={setTimeSlot}
+                            pricing={pricing}
                         />
                     }
 
@@ -180,6 +222,10 @@ function BaseModal(props) {
                             handleItemSelection={handleItemSelection}
                             decorationIds={decorationIds}
                             serviceMap={props.serviceMap}
+                            firstName={firstName}
+                            setFirstName={setFirstName}
+                            secondName={secondName}
+                            setSecondName={setSecondName}
                         />
                     }
 
@@ -248,8 +294,8 @@ function BaseModal(props) {
                             setEmail={setEmail}
                             mobile={mobile}
                             setMobile={setMobile}
-
-                            setBookingDetail={setBookingDetail}
+                            firstName={firstName}
+                            secondName={secondName}
                         />
                     }
 

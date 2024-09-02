@@ -11,7 +11,7 @@ function Welcome(props) {
                     onChange={(e) => props.setBookingDate(e.target.value)}
                 />
             </div>
-            <div className="centerbtn">
+            <div class="centerbtn onlythiscenter">
                 <a className="btn btn-next" 
                     onClick={props.nextStep} 
                     // isdisabled={props.step!==1}

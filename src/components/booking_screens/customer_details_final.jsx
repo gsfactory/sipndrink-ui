@@ -24,7 +24,9 @@ function CustomerDetailsFinalScreen(props) {
               "customer_name": props.name,
               "theatre": props.theater.id,
               "timeslot": props.timeSlotId,
-              "total_seats_booked": props.numPersons
+              "total_seats_booked": props.numPersons,
+              "first_name": props.firstName,
+              "second_name": props.secondName
         };
         
         const services=[...props.decorationIds, ...props.cakeIds, ...props.flowerIds, ...props.extraDecoIds, ...props.photoIds];
@@ -33,7 +35,7 @@ function CustomerDetailsFinalScreen(props) {
         // console.log('services', services);
         try {
         const result = await api_client.startBooking(booking, services);
-        // props.setBookingDetail(result);
+
         setData({
             result: result,
             theater: props.theater,

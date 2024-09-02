@@ -3,7 +3,7 @@ function Flowers(props) {
 
     const handleToggle = (id) => {
         // console.log('img toggled', id);
-        props.handleItemSelection(id, 'flowers', false);
+        props.handleItemSelection(id, 'flowers', true);
     };
 
     return (  

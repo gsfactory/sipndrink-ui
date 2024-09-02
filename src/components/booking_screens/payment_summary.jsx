@@ -1,5 +1,5 @@
 function PaymentSummary(props) {
-  console.log('ps', props.theater);
+  console.log('paymentsummary', props.theater);
   const extra_seats = props.theater != null && props.numPersons > props.theater.attributes.num_seats ? props.numPersons-props.theater.attributes.num_seats : 0;
     return ( 
         <div className="rigrt-boxwelcome">

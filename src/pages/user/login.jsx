@@ -1,92 +1,53 @@
 import { getCsrfToken, getSession } from "next-auth/react";
 
 export default function SimpleCard(props) {
+  console.log('login', props);
+
 
   return (
-    <Flex
-      minH={'100vh'}
-      align={'center'}
-      justify={'center'}
-      bg={useColorModeValue('gray.50', 'gray.800')}>
-      <Stack spacing={8} mx={'auto'} maxW={'lg'} py={12} px={6}>
-        <Stack align={'center'}>
-          <Heading fontSize={'4xl'}>Sign in to your account</Heading>
-          <Text fontSize={'lg'} color={'gray.600'}>
-            to enjoy all of our cool <Link color={'blue.400'}>features</Link> ✌️
-          </Text>
-        </Stack>
-        <Box
-          rounded={'lg'}
-          bg={useColorModeValue('white', 'gray.700')}
-          boxShadow={'lg'}
-          p={8}>
-          <Stack spacing={4}>
-            <form 
-                method="post"
-                action="/api/auth/callback/credentials" 
-                className="row g-3 needs-validation">
+    <div class="login-container">
+      <h2>Login</h2>
+      <form 
+        method="post"
+        action="/api/auth/callback/credentials" 
+        className="row g-3 needs-validation">
               
-              <input
-                  name="csrfToken"
-                  type="hidden"
-                  defaultValue={props.csrfToken}
-              />
-              <FormControl id="email">
-                <FormLabel>Email address</FormLabel>
-                <Input
-                  type="email"
-                  id="email"
-                  name="email"
-                />
-              </FormControl>
-              <FormControl id="password">
-                <FormLabel>Password</FormLabel>
-                <Input
-                  type="password"
-                  name="password"
-                  id="password"
-                />
-              </FormControl>
+        <input
+            name="csrfToken"
+            type="hidden"
+            defaultValue={props.csrfToken}
+        />
 
-              <Stack spacing={10}>
-                <Stack
-                  direction={{ base: 'column', sm: 'row' }}
-                  align={'start'}
-                  justify={'space-between'}>
-                  <Checkbox>Remember me</Checkbox>
-                  <Link color={'blue.400'}>Forgot password?</Link>
-                </Stack>
-                <Button
-                  isLoading={false} // Set to true if you need to show loading state
-                  type="submit"
-                  bg={'blue.400'}
-                  color={'white'}
-                  _hover={{
-                    bg: 'blue.500',
-                  }}>
-                  Sign in
-                </Button>
-              </Stack>
-            </form>
-          </Stack>
-        </Box>
-      </Stack>
-    </Flex>
+        <div class="form-group">
+          <input type="email" class="form-control" name="username" placeholder="Email" required />
+        </div>
+
+        <div class="form-group">
+          <input type="password" class="form-control" name="password" placeholder="Password" required />
+        </div>
+        <button type="submit" class="btn btn-primary">Login</button>
+
+      </form>
+    </div>
   );
 }
 
 export async function getServerSideProps(context) {
   try {
+    console.log('debug 1');
     const session = await getSession(context);
+    console.log('debug 2');
     if (session && session.user.name) {
+      console.log('debug 3');
       return {
         redirect: {
           permanent: false,
-          destination: "/app/main",
+          destination: "/",
         },
       };
     }
 
+    console.log('debug 4');
     return {
       props: {
         error: context.query && context.query.error ? context.query.error : null,
@@ -96,6 +57,7 @@ export async function getServerSideProps(context) {
       },
     };
   } catch (error) {
+    console.log('debug 5');
     console.log("Error:", error);
     return {
       props: {

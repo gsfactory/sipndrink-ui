@@ -3,8 +3,6 @@ import '../../public/styles/assets/fonts/font-awesome-4.7.0/css/font-awesome.min
 import '../../public/styles/assets/vendor/bootstrap/css/bootstrap.min.css';
 import '../../public/styles/assets/vendor/bootstrap-icons/bootstrap-icons.css';
 import "../../public/styles/assets/css/main.css";
-// import '../../public/styles/assets/cart/style.css';
-
 
 import { SessionProvider } from 'next-auth/react';
 

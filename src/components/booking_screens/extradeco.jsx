@@ -3,7 +3,7 @@ function ExtraDecorations(props) {
 
     const handleToggle = (id) => {
         // console.log('img toggled', id);
-        props.handleItemSelection(id, 'extra-decorations', false);
+        props.handleItemSelection(id, 'extra-decorations', true);
     };
 
     return (  

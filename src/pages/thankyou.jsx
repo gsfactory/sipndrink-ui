@@ -6,10 +6,15 @@ import { useData } from '../context/sip_context';
 function ThankYou(props) {
     const router = useRouter();
     const { data } = useData();
-    const services = ['decorations', 'cake', 'extra-decorations', 'flowers', 'photography'];
+    // const services = ['decorations', 'cake', 'extra-decorations', 'flowers', 'photography'];
     console.log('thankyou', data);
 
     useEffect(() => {
+      // Scroll to the top of the page on load
+      window.scrollTo(0, 0);
+      // Optionally ensure body scroll is enabled
+      document.body.style.overflow = 'auto';
+
         // This will only run on the client side
         if (!data) {
             console.log('Initiate booking first!');
@@ -32,8 +37,8 @@ function ThankYou(props) {
       </Head>
 
     <main id="main">
-    <section id="stats-counter " className="stats-counter thankyou">
-      <div className="container" data-aos="fade-up">
+    <section className="stats-counter thankyou">
+      <div className="container">
         <div className="section-header">
           <h2>Thank You</h2>
           <p>
@@ -67,79 +72,51 @@ function ThankYou(props) {
                 <td>{extra_seats * data.theater.attributes.extra_seat_cost}</td>
             </tr>
             }
-            {Object.entries(data.serviceMap['cake']).map(([key, value]) => {
-                    return <tr>
+            {Object.entries(data.serviceMap['cake'])
+              .filter(([key, value]) => data.services.includes(value.id))
+              .map(([key, value]) => {
+                    return <tr key={key}>
                       <td>cake - {value.name}</td>
                       <td>{value.price}</td>
                     </tr>
                   })
             }
-            {Object.entries(data.serviceMap['decorations']).map(([key, value]) => {
-                    return <tr>
+            {Object.entries(data.serviceMap['decorations'])
+              .filter(([key, value]) => data.services.includes(value.id))
+              .map(([key, value]) => {
+                    return <tr key={key}>
                       <td>Celebration - {value.name}</td>
                       <td>{value.price}</td>
                     </tr>
                   })
             }
-            {Object.entries(data.serviceMap['extra-decorations']).map(([key, value]) => {
-                    return <tr>
+            {Object.entries(data.serviceMap['extra-decorations'])
+              .filter(([key, value]) => data.services.includes(value.id))
+              .map(([key, value]) => {
+                    return <tr key={key}>
                       <td>Addon - {value.name}</td>
                       <td>{value.price}</td>
                     </tr>
                   })
             }
-            {Object.entries(data.serviceMap['flowers']).map(([key, value]) => {
-                    return <tr>
+            {Object.entries(data.serviceMap['flowers'])
+              .filter(([key, value]) => data.services.includes(value.id))
+              .map(([key, value]) => {
+                    return <tr key={key}>
                       <td>Flowers - {value.name}</td>
                       <td>{value.price}</td>
                     </tr>
                   })
             }
-            {Object.entries(data.serviceMap['photography']).map(([key, value]) => {
-                    return <tr>
+            {Object.entries(data.serviceMap['photography'])
+              .filter(([key, value]) => data.services.includes(value.id))
+              .map(([key, value]) => {
+                    return <tr key={key}>
                       <td>Photography - {value.name}</td>
                       <td>{value.price}</td>
                     </tr>
                   })
             }
-              <tr>
-                <td>celebration</td>
-                <td>1000</td>
-              </tr>
-              <tr>
-                <td>Cakes </td>
-                <td>1000</td>
-              </tr>
-                <tr>
-                  <td>4</td>
-                  <td>Extra Decoration  </td>
-                  <td>1000</td>
-                </tr>
-                  <tr>
-                    <td>5</td>
-                    <td>Roses </td>
-                    <td>1000</td>
-                  </tr>
-                    <tr>
-                      <td>6</td>
-                      <td>Extra Decoration 
-                        Smoke
-                        Balloons
-                        music
-                         </td>
-                      <td>1000</td>
-                    </tr>
-                      <tr>
-                        <td>7</td>
-                        <td>Memories
-                          100 pics 
-                           </td>
-                        <td>1000</td>
-                      </tr>
-                <tr>
-                <th colspan="2">Total </th>
-                <th>5000/-</th>
-              </tr>
             </tbody>
             </table>
         </div>

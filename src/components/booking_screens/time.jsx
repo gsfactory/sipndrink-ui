@@ -25,7 +25,7 @@ function Time(props) {
                             {/* <input type="time" name="start-date[]" id="start-date"/> */}
                             {/* theaterTimeSlots */}
                             <select 
-                                value={props.timeSlot || ""}
+                                value={props.timeSlot || props.theaterTimeSlots[0].id}
                                 onChange={(e) => props.setTimeSlot(e.target.value)}
                             >
                                 {props.theaterTimeSlots.map((item) => (
@@ -47,15 +47,8 @@ function Time(props) {
                                 </option>
                                 ))}
                             </select>
-
-                            {/* <select name="noperson" id="noperson">
-                                <option value="volvo">1</option>
-                                <option value="saab">2</option>
-                                <option value="opel">3</option>
-                                <option value="audi">4</option>
-                            </select> */}
                         </div>
-                        <div className="price_area"><h1>₹ 2599</h1>
+                        <div className="price_area"><h1>₹ {props.pricing}</h1>
                             <p>*inclusive of all taxes</p>
                         </div>
                     </div>

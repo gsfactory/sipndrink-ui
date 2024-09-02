@@ -1,5 +1,9 @@
+import { useState } from "react";
+
 function Celebrations(props) {
     console.log('celebrations', props);
+
+    const [error, setError] = useState("")
 
     const decorationNamesMap = {};
     for (let i=0; i<props.serviceMap['decorations'].length; i++) {
@@ -11,6 +15,21 @@ function Celebrations(props) {
     }
     console.log('decorationNamesMap', decorationNamesMap);
 
+    const handleNext = () => {
+        if (props.decorationIds && props.decorationIds.length > 0) {
+            if (!props.firstName) {
+                setError("Enter first name");
+                return;
+            }
+            if (decorationNamesMap[props.decorationIds[0]].second_text) {
+                if (!props.secondName) {
+                    setError("Enter second name");
+                    return;
+                }
+            }
+        }
+        props.nextStep();
+    }
     const handleToggle = (id) => {
         // console.log('img toggled', id);
         props.handleItemSelection(id, 'decorations', false);
@@ -41,14 +60,25 @@ function Celebrations(props) {
                         {props.decorationIds && props.decorationIds.length > 0 && 
                         <div className="celebration_det">
                             <h2>Please enter the following details</h2>
+                            {error && 
+                                <div className="text-danger">
+                                    {error}
+                                </div>
+                            }
                             <div className="input-group">
-                                <input type="text" placeholder={decorationNamesMap[props.decorationIds[0]].first_text} />
+                                <input type="text" 
+                                    placeholder={decorationNamesMap[props.decorationIds[0]].first_text} 
+                                    value={props.firstName}
+                                    onChange={(event) => props.setFirstName(event.target.value)}
+                                />
                             </div>
                             {decorationNamesMap[props.decorationIds[0]].second_text && (
                                 <div className="input-group">
                                     <input
                                         type="text"
                                         placeholder={decorationNamesMap[props.decorationIds[0]].second_text}
+                                        value={props.secondName}
+                                        onChange={(event) => props.setSecondName(event.target.value)}
                                     />
                                 </div>
                             )}
@@ -61,7 +91,7 @@ function Celebrations(props) {
                 <a className="btn btn-prev"
                     onClick={props.prevStep}>Previous</a>
                 <a className="btn btn-next" 
-                    onClick={props.nextStep}>Next</a>
+                    onClick={handleNext}>Next</a>
             </div>
         </div>
     );
