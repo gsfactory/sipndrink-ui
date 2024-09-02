@@ -1,7 +1,7 @@
 function Banner() {
     return (  
     <div className="slider-container">
-        <div className="slide" style={{ backgroundImage: "url('/styles/assets/img/banner.jfif')" }}>
+        <div className="slide" style={{ backgroundImage: "url('https://s3.amazonaws.com/client.limelox.com/sipndrink/imgs/banner.jpg')" }}>
           <div className="banner-contentarea">
           </div>
         </div>

@@ -18,50 +18,17 @@ export default NextAuth({
                 console.log("Authorizing...");
                 try {
                     let result = null;
-                    if (credentials.mobile) {
-                        console.log("Login with otp creds");
-                        const { data } = await axios.post(
-                            `${process.env.NEXT_PUBLIC_API_URL}/api/auth/local`,
-                            {
-                                identifier: credentials.mobile,
-                                password: credentials.password,
-                                provider: 'otp'
-                            }
-                        );
-                        result = data;
-                    }
-                    else {
-                        console.log("Login with old creds");
-                        const { data } = await axios.post(
-                            `${process.env.NEXT_PUBLIC_API_URL}/api/auth/local`,
-                            {
-                                identifier: credentials.email,
-                                password: credentials.password,
-                            }
-                        );
-                        result = data;
-                    }
-
-                    if (result.user.confirmed) {
-                        console.log("Confirmed user");
-                        const currentUser = await apiClient.getCurrentUserDetails(result.jwt);
-                        console.log('currentUser', currentUser);
-                        if (!["admin", "company_admin", "company_staff"].includes(currentUser.role.name.toLowerCase())) {
-                            return Promise.reject(new Error('Not allowed to login'));
+                    console.log("Login with old creds", credentials);
+                    const { data } = await axios.post(
+                        `${process.env.NEXT_PUBLIC_API_URL}/api/auth/local`,
+                        {
+                            identifier: credentials.email,
+                            password: credentials.password,
                         }
-
-                        result['role'] = {
-                            name: currentUser.role.name
-                        };
-                        result['company'] = {
-                            name: currentUser.company?.name,
-                            id: currentUser.company?.id
-                        };
-                        // console.log('nextauth user', currentUser);
-                        return result;
-                    } else {
-                        throw new Error('Details not found');
-                    }
+                    );
+                    result = data;
+                    result['role'] = 'admin';
+                    return result;
                     
                 } catch (e) {
                     console.log("Gorav error hai ye");
@@ -73,7 +40,7 @@ export default NextAuth({
     ],
     callbacks: {
         redirect: async ({ url, baseUrl }) => {
-            return '/app/main';
+            return '/bookings';
         },
         // Getting the JWT token from API response
         jwt: async ({ token, user }) => {

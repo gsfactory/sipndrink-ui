@@ -3,51 +3,85 @@ import { getCsrfToken, getSession } from "next-auth/react";
 export default function SimpleCard(props) {
   console.log('login', props);
 
+  const styles = {
+    loginContainer: {
+      display: 'flex',
+      justifyContent: 'center',
+      alignItems: 'center',
+      height: '100vh',
+      backgroundColor: '#f8f9fa',
+    },
+    loginForm: {
+      width: '100%',
+      maxWidth: '400px',
+      padding: '30px',
+      borderRadius: '8px',
+      backgroundColor: '#ffffff',
+      boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+    }
+  };
 
   return (
-    <div class="login-container">
-      <h2>Login</h2>
-      <form 
-        method="post"
-        action="/api/auth/callback/credentials" 
-        className="row g-3 needs-validation">
-              
-        <input
-            name="csrfToken"
-            type="hidden"
-            defaultValue={props.csrfToken}
-        />
+    <div className="d-flex justify-content-center align-items-center vh-100 bg-light"
+    style={{ minHeight: '80vh' }}
+    >
+      <div className="card p-4" style={{ maxWidth: '400px', width: '100%' }}>
+        <h2 className="text-center mb-4">Login</h2>
+        <form method="post" action="/api/auth/callback/credentials">
+        
+          <input
+              name="csrfToken"
+              type="hidden"
+              defaultValue={props.csrfToken}
+          />
+        
+          <div className="mb-3">
+            <label htmlFor="email" className="form-label">
+              Email address
+            </label>
+            <input
+              type="email"
+              name="email"
+              className="form-control"
+              id="email"
+              aria-describedby="emailHelp"
+              placeholder="Enter email" required
+            />
+          </div>
 
-        <div class="form-group">
-          <input type="email" class="form-control" name="username" placeholder="Email" required />
-        </div>
-
-        <div class="form-group">
-          <input type="password" class="form-control" name="password" placeholder="Password" required />
-        </div>
-        <button type="submit" class="btn btn-primary">Login</button>
-
-      </form>
+          <div className="mb-3">
+            <label htmlFor="password" className="form-label">
+              Password
+            </label>
+            <input
+              name="password"
+              type="password"
+              className="form-control"
+              id="password"
+              placeholder="Password" required
+            />
+          </div>
+          <button type="submit" className="btn btn-primary w-100">
+            Login
+          </button>
+        </form>
+      </div>
     </div>
   );
 }
 
 export async function getServerSideProps(context) {
   try {
-    console.log('debug 1');
     const session = await getSession(context);
-    console.log('debug 2');
     if (session && session.user.name) {
-      console.log('debug 3');
       return {
         redirect: {
           permanent: false,
-          destination: "/",
+          destination: "/bookings",
         },
       };
     }
 
-    console.log('debug 4');
     return {
       props: {
         error: context.query && context.query.error ? context.query.error : null,
@@ -57,7 +91,6 @@ export async function getServerSideProps(context) {
       },
     };
   } catch (error) {
-    console.log('debug 5');
     console.log("Error:", error);
     return {
       props: {

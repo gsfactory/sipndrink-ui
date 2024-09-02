@@ -1,8 +1,9 @@
 import React from 'react';
-// import Navbar from './navbar';
+import { signOut, useSession } from 'next-auth/react'
 import Footer from './footer';
 
 export default function Layout({ children }) {
+    const { data: session, status } = useSession();
     return (
         <>
             <header id="header" className="header d-flex align-items-center">
@@ -14,8 +15,18 @@ export default function Layout({ children }) {
                         <a className="nav-brand" href="/"><img src="/logo.svg" /></a>
                         </div>
                         <ul className="header-right">
-                        <li><a href="#"><i className="fa fa-whatsapp"></i>  +91 8162658928</a></li>
-                        <li><a data-toggle="modal" data-target="#myModal" className="bookbtn">Book Now</a></li>
+                            <li><a href="#"><i className="fa fa-whatsapp"></i>  +91 8162658928</a></li>
+                            <li><a data-toggle="modal" data-target="#myModal" className="bookbtn">Book Now</a></li>
+                            {session && 
+                            <li>
+                                <button
+                                    onClick={() => signOut()}
+                                    className="btn btn-danger"
+                                >
+                                    Sign Out
+                                </button>
+                            </li>
+                            }
                         </ul>
                     </nav>
                     </div>

@@ -2,15 +2,13 @@ import React, { useState } from 'react';
 import moment from 'moment';
 import Moment from 'react-moment';
 import api_client from '@/components/api/api_client';
+import { getSession } from "next-auth/react";
 
-const App = () => {
-  // State for filtering
-    const today = moment().format("YYYY-MM-DD");
-    const lastDay = moment().subtract(1, "days").format('YYYY-MM-DD');
+const App = (props) => {
 
-  const [bookings, setBookings] = useState([]);
-  const [fromDate, setFromDate] = useState(lastDay);
-  const [toDate, setToDate] = useState(today);
+  const [bookings, setBookings] = useState(props.data || []);
+  const [fromDate, setFromDate] = useState(props.lastDay);
+  const [toDate, setToDate] = useState(props.today);
 
   // Styles
   const styles = {
@@ -73,7 +71,6 @@ const App = () => {
       </header>
 
       <main style={styles.content}>
-        <h2 className="text-center mb-4">Filter Data by Date</h2>
         
         {/* Date Filters and Search Button */}
         <div className="row mb-4">
@@ -140,12 +137,33 @@ const App = () => {
           </table>
         </div>
       </main>
-
-      <footer style={styles.footer}>
-        <p>Footer Content</p>
-      </footer>
     </div>
   );
 };
+
+export async function getServerSideProps(ctx){
+  const session = await getSession(ctx);
+    if (!session) {
+      return {
+        redirect: {
+          permanent: false,
+          destination: "/",
+        },
+      };
+    }
+
+    const today = moment().format("YYYY-MM-DD");
+    const lastDay = moment().subtract(1, "days").format('YYYY-MM-DD');
+
+    const data = await api_client.getBookings(lastDay, today);
+
+    return {
+        props:{
+            today: today,
+            lastDay: lastDay,
+            data: data.data
+        }
+    }
+}
 
 export default App;

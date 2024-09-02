@@ -19,6 +19,8 @@ const slides = document.querySelectorAll('.slide');
     if(activeSlide >= slides.length) {
       activeSlide = 0;
     }
+    
+    console.log(prevActive, activeSlide);
   }
   
   controls.forEach(control => {
