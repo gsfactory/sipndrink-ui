@@ -3,6 +3,7 @@ import api_client from "../api/api_client";
 
 function Theaters(props) {
     console.log('theaters', props);
+    const s3Basepath = 'https://s3.amazonaws.com/client.limelox.com';
     
     const [error, setError] = useState("");
 
@@ -45,24 +46,30 @@ function Theaters(props) {
                 } */}
                 <div className="box-container row">
                  {props.theaters.map(theater => (
-                        <div className="col-md-4" key={theater.id}>
-                            <div 
-                                className={`box ${props.theater?.id === theater.id ? 'active' : ''}`} 
-                                onClick={() => onTheaterSelect(theater)}
-                                >
+                    <div className="col-md-4" key={theater.id}>
+                        <div 
+                            className={`box ${props.theater?.id === theater.id ? 'active' : ''}`} 
+                            onClick={() => onTheaterSelect(theater)}
+                            >
 
-                                <img 
-                                    src={theater.attributes.photo.data[0].attributes.url.startsWith('/') ? `${process.env.NEXT_PUBLIC_API_URL}${theater.attributes.photo.data[0].attributes.url}` : theater.attributes.photo.data[0].attributes.url} />
-                                <h3>{theater.attributes.name}</h3>
-                                
-                                <p>₹{theater.attributes.pricing_per_slot} for {theater.attributes.num_seats} or less people<br /> (Rs {theater.attributes.extra_seat_cost} per extra person)</p>
-                                {/* <span className="active">0 slots available on <samp>18-08-2024</samp></span> */}
-                                <a className="btn btn-next booknoe"
-                                    onClick={(event) => onTheaterSelect(theater)}
-                                >Book Now</a>
-                                <span className="noper">{theater.attributes.min_num_people} - {theater.attributes.num_seats + theater.attributes.max_extra_seats} People</span>
-                            </div>
+                            <img 
+                                src={
+                                    theater.attributes.photo.data[0].attributes.url.startsWith('/') 
+                                    ? 
+                                    `${process.env.NEXT_PUBLIC_API_URL}${theater.attributes.photo.data[0].attributes.url}` 
+                                    : 
+                                    `${s3Basepath}/${theater.attributes.photo.data[0].attributes.hash}${theater.attributes.photo.data[0].attributes.ext}`
+                                } />
+                            <h3>{theater.attributes.name}</h3>
+                            
+                            <p>₹{theater.attributes.pricing_per_slot} for {theater.attributes.num_seats} or less people<br /> (Rs {theater.attributes.extra_seat_cost} per extra person)</p>
+                            {/* <span className="active">0 slots available on <samp>18-08-2024</samp></span> */}
+                            <a className="btn btn-next booknoe"
+                                onClick={(event) => onTheaterSelect(theater)}
+                            >Book Now</a>
+                            <span className="noper">{theater.attributes.min_num_people} - {theater.attributes.num_seats + theater.attributes.max_extra_seats} People</span>
                         </div>
+                    </div>
                     ))}
                      
                 <p className="note-detls">Note: Timing of the photography is according to the availability of the photographer.</p>     

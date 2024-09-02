@@ -1,5 +1,6 @@
 function Cakes(props) {
     console.log('cakes', props);
+    const s3Basepath = 'https://s3.amazonaws.com/client.limelox.com';
 
     const handleToggle = (id) => {
         // console.log('img toggled', id);
@@ -16,7 +17,7 @@ function Cakes(props) {
                         <div className={`imagearea ${props.cakeIds.includes(cake.id) ? 'active' : ''}`}>
                         <img 
                             onClick={() => handleToggle(cake.id)}
-                            src={cake.photo.data[0].attributes.url.startsWith('/') ? `${process.env.NEXT_PUBLIC_API_URL}${cake.photo.data[0].attributes.url}` : cake.photo.data[0].attributes.url} />
+                            src={cake.photo.data[0].attributes.url.startsWith('/') ? `${process.env.NEXT_PUBLIC_API_URL}${cake.photo.data[0].attributes.url}` : `${s3Basepath}/${cake.attributes.photo.data[0].attributes.hash}${cake.attributes.photo.data[0].attributes.ext}`} />
                         <h6>{cake.name}</h6>
                         <h5>₹ {cake.price}</h5>
                         </div>

@@ -6,42 +6,42 @@ function Banner5() {
           <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
           <div className="accordion">
             <div className="tab">
-              <img src="/styles/assets/img/1.jpg" alt="" />
+              <img src="https://s3.amazonaws.com/client.limelox.com/sipndrink/imgs/1.jpg" alt="" />
               <div className="caption">
                 <h2>Lorem Impsum</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
               </div>
             </div>
             <div className="tab">
-              <img src="/styles/assets/img/2.jpg" alt="" />
+              <img src="https://s3.amazonaws.com/client.limelox.com/sipndrink/imgs/2.jpg" alt="" />
               <div className="caption">
                 <h2>Lorem Impsum</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
               </div>
             </div>
             <div className="tab">
-              <img src="/styles/assets/img/3.jpg" alt="" />
+              <img src="https://s3.amazonaws.com/client.limelox.com/sipndrink/imgs/3.jpg" alt="" />
               <div className="caption">
                 <h2>Lorem Impsum</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
               </div>
             </div>
             <div className="tab">
-              <img src="/styles/assets/img/4.jpg" alt="" />
+              <img src="https://s3.amazonaws.com/client.limelox.com/sipndrink/imgs/4.jpg" alt="" />
               <div className="caption">
                 <h2>Lorem Impsum</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
               </div>
             </div>
             <div className="tab">
-              <img src="/styles/assets/img/5.jpg" alt="" />
+              <img src="https://s3.amazonaws.com/client.limelox.com/sipndrink/imgs/5.jpg" alt="" />
               <div className="caption">
                 <h2>Lorem Impsum</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
               </div>
             </div>
             <div className="tab">
-              <img src="/styles/assets/img/6.jpg" alt="" />
+              <img src="https://s3.amazonaws.com/client.limelox.com/sipndrink/imgs/6.jpg" alt="" />
               <div className="caption">
                 <h2>Lorem Impsum</h2>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit</p>
