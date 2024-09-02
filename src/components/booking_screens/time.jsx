@@ -1,5 +1,6 @@
 function Time(props) {
     console.log('time', props);
+    const s3Basepath = 'https://s3.amazonaws.com/client.limelox.com';
     const max_seats = props.theater.attributes.max_extra_seats + props.theater.attributes.num_seats;
     return ( 
         <div className="form-step active">
@@ -9,7 +10,9 @@ function Time(props) {
                     <div className="col-md-6">
                         <div className="content-details">
                             <img
-                                src={props.theater.attributes.photo.data[0].attributes.url.startsWith('/') ? `${process.env.NEXT_PUBLIC_API_URL}${props.theater.attributes.photo.data[0].attributes.url}` : props.theater.attributes.photo.data[0].attributes.url} 
+                                src={props.theater.attributes.photo.data[0].attributes.url.startsWith('/') ? `${process.env.NEXT_PUBLIC_API_URL}${props.theater.attributes.photo.data[0].attributes.url}` : 
+                                `${s3Basepath}/${props.theater.attributes.photo.data[0].attributes.hash}${props.theater.attributes.photo.data[0].attributes.ext}`
+                                } 
                             />
                             <h2>{props.theater.attributes.name}</h2>
                             <ul>
