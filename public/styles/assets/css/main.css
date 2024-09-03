@@ -352,6 +352,10 @@ section {
   cursor: pointer;
   background: #FAC601;
 }
+.box.inactive {
+  cursor: pointer;
+  background: #708090;
+}
 .celebration_det {
   background: #fff;
   padding: 20px;

@@ -48,7 +48,9 @@ function Banner5() {
               </div>
             </div>
           </div>
-          <div className="button_area"><a href="#" className="bookbtn">Book Now</a></div>
+          <div className="button_area">
+            <a data-toggle="modal" data-target="#myModal" className="bookbtn">Book Now</a>
+          </div>
         </div>
       
       </section>

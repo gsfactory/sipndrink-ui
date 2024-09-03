@@ -50,34 +50,11 @@ class ApiClient {
         return "remote";
     }
 
-    async getUserByEmail(email) {
-        const authHeader = await this.getAuthHeader();
+    async getBusinessDetails() {
         let { data } = await axios.get(
-            `/users?email=${email}`,
-            {
-                headers: authHeader,
-            }
+            '/business-details'
         );
         return data;
-    }
-
-    async getUserById(req, id) {
-        const authHeader = await this.getAuthHeader(req);
-        let { data } = await axios.get(
-            `/users/${id}?populate=*`,
-            {
-                headers: authHeader,
-            }
-        );
-        return data;
-    }
-
-    async getInlineImageFolder() {
-        const currentTime = new Date();
-        const month = currentTime.getMonth() + 1;
-        const year = currentTime.getFullYear();
-        const uid = await this.getUserId();
-        return `${uid}/${year}/${month}`;
     }
 
     async getTheatres() {
@@ -112,6 +89,17 @@ class ApiClient {
             `/timeslots?populate=*&filters[theatre][id][$eq]=${theatreId}`
         );
         return data;
+    }
+
+    async getTheatersSlotsAvailability(theatreId, dateQuery) {
+        
+        // const dateQuery = moment(date, 'YYYY-MM-DD').format('YYYY-MM-DD');
+        console.log('getTheatersSlotsAvailability', dateQuery);
+        let { data } = await axios.get(
+            `/theatres/availability?theater=${theatreId}&date=${dateQuery}`
+        );
+        return data;
+        // return [];
     }
 
 
@@ -173,34 +161,22 @@ class ApiClient {
         }
     }
 
-    async getBookings(fromDate, toDate, page = 1, pageSize = 500) {
-        const headers = await this.getAuthHeader();
+    async getBookings(ctxReq, fromDate, toDate, page = 1, pageSize = 500) {
+        const headers = await this.getAuthHeader(ctxReq);
         const newToDate = moment(toDate, 'YYYY-MM-DD').add("1", "days").format('YYYY-MM-DD');
         let query = {
-            sort: ['createdAt:desc'],
+            sort: ['date:desc'],
             pagination: {
                 page: page,
                 pageSize: pageSize
             },
             filters: {
-                createdAt: {
+                date: {
                     $gte: fromDate,
                     $lte: newToDate
                 },
             },
             populate: '*'
-            // populate: {
-            //     company: true, 
-            //     company_location: true, 
-            //     visitor_documents: {
-            //         populate: {
-            //             file: true
-            //         }
-            //     },
-            //     visitor: {
-            //       populate: '*'
-            //     }
-            // }
         };
 
         const q = qs.stringify(query, { encodeValuesOnly: true });
@@ -208,6 +184,61 @@ class ApiClient {
         try {
             let { data } = await axios.get(
                 `/bookings?${q}`,
+                {
+                    headers: headers,
+                }
+            );
+            return data;
+        } catch (error) {
+            return null
+        }
+    }
+
+    async getBookingById(ctxReq, id) {
+        const headers = await this.getAuthHeader(ctxReq);
+
+        try {
+            let { data } = await axios.get(
+                `/bookings/${id}?populate=*`,
+                {
+                    headers: headers,
+                }
+            );
+            return data;
+        } catch (error) {
+            return null
+        }
+    }
+
+    async getBookingServices(context, bookingId) {
+        const headers = await this.getAuthHeader(context);
+        console.log('headers', headers);
+
+        let query = {
+            filters: {
+                booking: {
+                    id: {
+                        $eq: bookingId
+                    }
+                },
+            },
+            populate: {
+                // service_detail: true, 
+                // company_location: true, 
+                // visitor_documents: {
+                //     populate: {
+                //         file: true
+                //     }
+                // },
+                service_detail: {
+                  populate: '*'
+                }
+            }
+        };
+        const q = qs.stringify(query, { encodeValuesOnly: true });
+        try {
+            let { data } = await axios.get(
+                `/booking-services?${q}`,
                 {
                     headers: headers,
                 }

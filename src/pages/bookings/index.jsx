@@ -1,8 +1,13 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import moment from 'moment';
 import Moment from 'react-moment';
 import api_client from '@/components/api/api_client';
 import { getSession } from "next-auth/react";
+import Link from 'next/link';
+import Footer from '@/components/layouts/footer';
+import Head from 'next/head';
+import Header from '@/components/layouts/header';
+import SEO from '@/components/seo/seo';
 
 const App = (props) => {
 
@@ -57,22 +62,86 @@ const App = (props) => {
     },
   };
 
+  useEffect(() => {
+    handleSearch();
+  }, [fromDate, toDate]);
+
   const handleSearch = async () => {
     // call api
-    const data = await api_client.getBookings(fromDate, toDate);
-    console.log(data);
+    console.log("searching...");
+    const data = await api_client.getBookings(null, fromDate, toDate);
+    // console.log(data);
     setBookings(data.data);
   };
 
+  const fetchBookings = async (whichTime) => {
+    console.log("Fetching booking for", whichTime);
+    if (whichTime === "today") {
+      setFromDate(props.today);
+      setToDate(props.today);
+    } else if (whichTime === "tomorrow") {
+      const dt = moment().add(1, "days").format('YYYY-MM-DD');
+      setFromDate(dt);
+      setToDate(dt);
+    } else if (whichTime === "yesterday") {
+      const dt = moment().subtract(1, "days").format('YYYY-MM-DD');
+      setFromDate(dt);
+      setToDate(dt);
+    } else if (whichTime === "last 7") {
+      const dt = moment().subtract(7, "days").format('YYYY-MM-DD');
+      setFromDate(dt);
+      setToDate(props.today);
+    } else if (whichTime === "next week") {
+      const dt = moment().add(7, "days").format('YYYY-MM-DD');
+      setFromDate(props.today);
+      setToDate(dt);
+    } else if (whichTime === "next month") {
+      const dt = moment().add(1, "month").format('YYYY-MM-DD');
+      setFromDate(props.today);
+      setToDate(dt);
+    }
+  }
+
   return (
-    <div style={styles.wrapper}>
-      <header style={styles.header}>
-        <h1>Sip'n'Drink Bookings</h1>
-      </header>
+    <>
+      <SEO 
+        title="List of bookings | SipnScreen"
+        description="List of bookings"
+      />
+
+      <Header />
+      <div style={styles.wrapper}>
+      <div className="p-3 text-center">
+        <h1>Sip'n'Screen Bookings</h1>
+      </div>
 
       <main style={styles.content}>
         
         {/* Date Filters and Search Button */}
+        <div className="row mb-4">
+          <div className="col-md-4">
+              <Link href="#" onClick={() => fetchBookings('today')}>
+                <span className="badge badge-secondary">Today bookings</span>
+              </Link> <br />
+              <Link href="#" onClick={() => fetchBookings('tomorrow')}>
+                <span className="badge badge-secondary">Tomorrow bookings</span>
+              </Link> <br />
+              <Link href="#" onClick={() => fetchBookings('yesterday')}>
+                <span className="badge badge-secondary">Yesterday bookings</span>
+              </Link> <br />
+          </div>
+          <div className="col-md-4">
+              <Link href="#" onClick={() => fetchBookings('last 7')}>
+                <span className="badge badge-secondary">Last 7 days</span>
+              </Link> <br />
+              <Link href="#" onClick={() => fetchBookings('next week')}>
+                <span className="badge badge-secondary">Next Week bookings</span>
+              </Link> <br />
+              <Link href="#" onClick={() => fetchBookings('next month')}>
+                <span className="badge badge-secondary">Next Month bookings</span>
+              </Link>
+            </div>
+          </div>
         <div className="row mb-4">
           <div className="col-md-4">
             <label htmlFor="fromDate" className="form-label">From Date</label>
@@ -97,7 +166,7 @@ const App = (props) => {
           <div className="col-md-4 d-flex align-items-end">
             <button
               style={styles.button}
-              className="btn btn-primary w-100"
+              className="btn btn-primary"
               onClick={handleSearch}
             >
               Search
@@ -130,7 +199,12 @@ const App = (props) => {
                         {item.attributes.createdAt}
                     </Moment>
                     </td>
-                  <td style={styles.td}>Click here</td>
+                  <td style={styles.td}>
+                    <Link 
+                        href={`/bookings/${item.id}`} className="text-primary">
+                        click here
+                    </Link>
+                  </td>
                 </tr>
               ))}
             </tbody>
@@ -138,6 +212,9 @@ const App = (props) => {
         </div>
       </main>
     </div>
+
+      <Footer />
+    </>
   );
 };
 
@@ -147,20 +224,19 @@ export async function getServerSideProps(ctx){
       return {
         redirect: {
           permanent: false,
-          destination: "/",
+          destination: "/user/login",
         },
       };
     }
 
     const today = moment().format("YYYY-MM-DD");
-    const lastDay = moment().subtract(1, "days").format('YYYY-MM-DD');
 
-    const data = await api_client.getBookings(lastDay, today);
+    const data = await api_client.getBookings(ctx.req, today, today);
 
     return {
         props:{
             today: today,
-            lastDay: lastDay,
+            lastDay: today,
             data: data.data
         }
     }

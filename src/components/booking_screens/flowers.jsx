@@ -19,7 +19,7 @@ function Flowers(props) {
                         <div className={`imagearea ${props.flowerIds.includes(decoration.id) ? 'active' : ''}`}>
                             <img 
                             onClick={() => handleToggle(decoration.id)}
-                            src={decoration.photo.data[0].attributes.url.startsWith('/') ? `${process.env.NEXT_PUBLIC_API_URL}${decoration.photo.data[0].attributes.url}` : `${s3Basepath}/${decoration.attributes.photo.data[0].attributes.hash}${decoration.attributes.photo.data[0].attributes.ext}`} />
+                            src={decoration.photo.data[0].attributes.url.startsWith('/') ? `${process.env.NEXT_PUBLIC_API_URL}${decoration.photo.data[0].attributes.url}` : `${s3Basepath}/${decoration.photo.data[0].attributes.hash}${decoration.photo.data[0].attributes.ext}`} />
                         <h6>{decoration.name}</h6>
                         <h5>₹ {decoration.price}</h5>
                         </div>

@@ -1,7 +1,11 @@
+import Footer from "@/components/layouts/footer";
+import Header from "@/components/layouts/header";
+import SEO from "@/components/seo/seo";
 import { getCsrfToken, getSession } from "next-auth/react";
+import Head from "next/head";
 
 export default function SimpleCard(props) {
-  console.log('login', props);
+  // console.log('login', props);
 
   const styles = {
     loginContainer: {
@@ -22,6 +26,12 @@ export default function SimpleCard(props) {
   };
 
   return (
+    <>
+    <SEO 
+      title="Login to SipnScreen"
+      description="Login to SipnScreen"
+    />
+    <Header />
     <div className="d-flex justify-content-center align-items-center vh-100 bg-light"
     style={{ minHeight: '80vh' }}
     >
@@ -67,6 +77,9 @@ export default function SimpleCard(props) {
         </form>
       </div>
     </div>
+
+    <Footer />
+    </>
   );
 }
 

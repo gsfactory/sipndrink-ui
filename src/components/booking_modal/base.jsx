@@ -19,6 +19,7 @@ function BaseModal(props) {
     const [step, setStep] = useState(1);
     const [theater, setTheater] = useState(null);
     const [theaterTimeSlots, setTheaterTimeSlots] = useState(null);
+    const [slotsAvailability, setSlotsAvailability] = useState([]);
     const [pricing, setPricing] = useState(0);//props.data.pricing_per_slot);
 
     const [bookingDate, setBookingDate] = useState(getCurrentDate());
@@ -31,6 +32,7 @@ function BaseModal(props) {
     const [flowerIds, setFlowerIds] = useState([]);
     const [photoIds, setPhotoIds] = useState([]);
 
+    const [isEggless, setIsEggless] = useState(false);
     const [name, setName] = useState("");
     const [mobile, setMobile] = useState("");
     const [email, setEmail] = useState("");
@@ -198,6 +200,9 @@ function BaseModal(props) {
                             setTheater={setTheater}
                             theaterTimeSlots={theaterTimeSlots}
                             setTheaterTimeSlots={setTheaterTimeSlots}
+                            bookingDate={bookingDate}
+                            slotsAvailability={slotsAvailability}
+                            setSlotsAvailability={setSlotsAvailability}
                         />
                     }
 
@@ -212,6 +217,7 @@ function BaseModal(props) {
                             timeSlot={timeSlot}
                             setTimeSlot={setTimeSlot}
                             pricing={pricing}
+                            slotsAvailability={slotsAvailability}
                         />
                     }
 
@@ -236,6 +242,8 @@ function BaseModal(props) {
                             handleItemSelection={handleItemSelection}
                             serviceMap={props.serviceMap}
                             cakeIds={cakeIds}
+                            isEggless={isEggless}
+                            setIsEggless={setIsEggless}
                         />
                     }
 
@@ -307,6 +315,7 @@ function BaseModal(props) {
                         <PaymentSummary 
                             pricing={pricing}
                             theater={theater}
+                            businessDetails={props.businessDetails}
 
                             theaters={props.theatres.data}
 

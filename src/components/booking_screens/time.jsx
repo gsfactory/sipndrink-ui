@@ -1,5 +1,8 @@
 function Time(props) {
     console.log('time', props);
+
+    const desc = props.theater.attributes.description.split("\n");
+
     const s3Basepath = 'https://s3.amazonaws.com/client.limelox.com';
     const max_seats = props.theater.attributes.max_extra_seats + props.theater.attributes.num_seats;
     return ( 
@@ -16,9 +19,17 @@ function Time(props) {
                             />
                             <h2>{props.theater.attributes.name}</h2>
                             <ul>
-                            <li>₹{props.theater.attributes.pricing_per_slot} for {props.theater.attributes.num_seats} or less people<br /> (Rs {props.theater.attributes.extra_seat_cost} per extra person)</li>
+                                {
+                                    desc.map((item, index) => {
+                                        return <li key={index}>
+                                            {item}
+                                        </li>
+                                    })
+                                }
+                                {/* <li>₹{props.theater.attributes.pricing_per_slot} for {props.theater.attributes.num_seats} or less people<br /> (Rs {props.theater.attributes.extra_seat_cost} per extra person)</li>
                                 <li> Mega 150 inch enhanced 4k Video. Powerful 1000W Dolby atmos sound system (In-wall speakers). Ideal for family and friends.</li>
-                                <li> Food & Beverages can be ordered at the theatre.</li>
+                                <li> Food & Beverages can be ordered at the theatre.</li> */}
+                                {/* {props.theater.attributes.description} */}
                             </ul>
                         </div>
                     </div>
@@ -33,7 +44,7 @@ function Time(props) {
                             >
                                 {props.theaterTimeSlots.map((item) => (
                                     <option key={item.id} value={item.id}>
-                                        {`${item.attributes.start_time.slice(0, 5)} - ${item.attributes.end_time.slice(0, 5)}`}
+                                        {`${item.attributes.start_time.slice(0, 5)} - ${item.attributes.end_time.slice(0, 5)} - ${props.slotsAvailability[props.theater.id]['availability'][item.id] === true ? "Available" : "Unavailable" }`}
                                     </option>
                                     ))}
                             </select>

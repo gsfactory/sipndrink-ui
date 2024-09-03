@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import api_client from "../api/api_client";
 
 function Theaters(props) {
@@ -6,6 +6,25 @@ function Theaters(props) {
     const s3Basepath = 'https://s3.amazonaws.com/client.limelox.com';
     
     const [error, setError] = useState("");
+
+    useEffect(() => {
+        const fetchData = async () => {
+            let promises = [];
+            for (let i=0; i<props.theaters.length; i++) {
+                promises[i] = api_client.getTheatersSlotsAvailability(props.theaters[i].id, props.bookingDate);
+            }
+            const results = await Promise.all(promises);
+            let theaterSlotDict = {};
+            for (let i=0; i<props.theaters.length; i++) {
+                theaterSlotDict[props.theaters[i].id] = results[i];
+            }
+            props.setSlotsAvailability(theaterSlotDict);
+            console.log('result of promises', theaterSlotDict);
+            // await api_client.getTheatersSlotsAvailability();
+        }
+
+        fetchData();
+    }, [])
 
     const onNext = () => {
         if (!props.theater) {
@@ -16,8 +35,10 @@ function Theaters(props) {
         props.nextStep();
 
     }
+
     const onTheaterSelect = async (theater) => {
-        console.log('Getting timeslots');
+        // console.log('Getting timeslots');
+        
         setError("");
         try {
             const timeslots = await api_client.getTimeslotsByTheatre(theater.id);
@@ -48,8 +69,8 @@ function Theaters(props) {
                  {props.theaters.map(theater => (
                     <div className="col-md-4" key={theater.id}>
                         <div 
-                            className={`box ${props.theater?.id === theater.id ? 'active' : ''}`} 
-                            onClick={() => onTheaterSelect(theater)}
+                            className={`box ${props.theater?.id === theater.id ? 'active' : props.slotsAvailability[theater.id]?.num_available === 0 ? 'inactive': ''}`} 
+                            onClick={props.slotsAvailability[theater.id]?.num_available > 0 ? () => onTheaterSelect(theater) : undefined}
                             >
 
                             <img 
@@ -63,11 +84,24 @@ function Theaters(props) {
                             <h3>{theater.attributes.name}</h3>
                             
                             <p>₹{theater.attributes.pricing_per_slot} for {theater.attributes.num_seats} or less people<br /> (Rs {theater.attributes.extra_seat_cost} per extra person)</p>
-                            {/* <span className="active">0 slots available on <samp>18-08-2024</samp></span> */}
-                            <a className="btn btn-next booknoe"
-                                onClick={(event) => onTheaterSelect(theater)}
-                            >Book Now</a>
+                            <span className="active">
+                                {props.slotsAvailability[theater.id]?.num_available} slots available on <samp>18-08-2024</samp>
+                            </span>
+
+                            {props.slotsAvailability[theater.id]?.num_available > 0 ?
+                                <a className="btn btn-next booknoe"
+                                    onClick={(event) => onTheaterSelect(theater)}
+                                >Book Now</a>
+                            :
+                                <a className="btn btn-next booknoe text-muted bg-light disabled" aria-disabled="true">
+                                    Unavailable
+                                </a>
+                                // <button type="button" class="btn btn-next booknoe" disabled>
+                                //     Unavailable
+                                // </button>
+                            }
                             <span className="noper">{theater.attributes.min_num_people} - {theater.attributes.num_seats + theater.attributes.max_extra_seats} People</span>
+
                         </div>
                     </div>
                     ))}

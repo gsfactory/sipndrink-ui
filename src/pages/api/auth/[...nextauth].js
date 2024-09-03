@@ -51,9 +51,7 @@ export default NextAuth({
                 token.id = user.user.id;
                 token.name = user.user.username;
                 token.email = user.user.email;
-                token.role = user.role?.name,
-                token.companyId = user.company?.id,
-                token.company = user.company?.name
+                token.role = user.role?.name;
             }
             return Promise.resolve(token);
         },
@@ -62,8 +60,6 @@ export default NextAuth({
             session.jwt = token.jwt;
             session.id = token.id;
             session.role = token.role;
-            session.companyId = token.companyId,
-            session.company = token.company
             return Promise.resolve(session);
         },
     },

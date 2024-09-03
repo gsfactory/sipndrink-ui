@@ -19,8 +19,6 @@ const slides = document.querySelectorAll('.slide');
     if(activeSlide >= slides.length) {
       activeSlide = 0;
     }
-    
-    console.log(prevActive, activeSlide);
   }
   
   controls.forEach(control => {
@@ -35,32 +33,32 @@ const slides = document.querySelectorAll('.slide');
     });
   });
 
-  const splide = new Splide(".splide", {
-    // Optional parameters
-    start: 1,
-    perPage: 1.5,
-    perMove: 1,
-    gap: 20,
-    type: "loop",
-    drag: "free",
-    snap: false,
-    interval: 3000,
-    arrows: true,
-    pagination: true,
-    rewind: true,
-    rewindByDrag: true,
-    lazyLoad: true,
+//   const splide = new Splide(".splide", {
+//     // Optional parameters
+//     start: 1,
+//     perPage: 1.5,
+//     perMove: 1,
+//     gap: 20,
+//     type: "loop",
+//     drag: "free",
+//     snap: false,
+//     interval: 3000,
+//     arrows: true,
+//     pagination: true,
+//     rewind: true,
+//     rewindByDrag: true,
+//     lazyLoad: true,
  
-    // Responsive breakpoint
-    breakpoints: {
-       768: {
-          perPage: 1,
-          snap: true
-       }
-    }
- });
+//     // Responsive breakpoint
+//     breakpoints: {
+//        768: {
+//           perPage: 1,
+//           snap: true
+//        }
+//     }
+//  });
  
- splide.mount();
+//  splide.mount();
 
  const prevBtns = document.querySelectorAll(".btn-prev");
  const nextBtns = document.querySelectorAll(".btn-next");
@@ -102,7 +100,6 @@ const slides = document.querySelectorAll('.slide');
          formStepsNum++;
          updateFormSteps();
          updateProgressBar();
-         console.log("kk")
      })
  })
  
@@ -112,7 +109,6 @@ const slides = document.querySelectorAll('.slide');
          formStepsNum--;
          updateFormSteps();
          updateProgressBar();
-         console.log("kk")
      })
  })
  

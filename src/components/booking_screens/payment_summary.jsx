@@ -3,13 +3,22 @@ function PaymentSummary(props) {
   const extra_seats = props.theater != null && props.numPersons > props.theater.attributes.num_seats ? props.numPersons-props.theater.attributes.num_seats : 0;
     return ( 
         <div className="rigrt-boxwelcome">
-            <h3>Sip N Screen</h3>
-            <ul><li><i className="fa fa-phone"></i> +91 1234567890</li>
-                <li><i className="fa fa-map-marker"></i> Hyderabad, Lorem Ipsum is simply dummy text.</li>
+            <h3>{props.businessDetails.attributes.name}</h3>
+            <ul>
+                <li><i className="fa fa-phone"></i> +91 {props.businessDetails.attributes.mobile}</li>
+                <li><i className="fa fa-map-marker"></i> {props.businessDetails.attributes.address}</li>
                 <li><i className="fa fa-video-camera"></i>
                 {props.theater ? props.theater.attributes.name : "Select a Theater"}
                 </li>
-                <li><i className="fa fa-certificate" aria-hidden="true"></i> Total-Seats: {props.numPersons}</li>
+                {props.theater ? 
+                <li>
+                    <i className="fa fa-certificate" aria-hidden="true"></i> Total-Seats: {props.numPersons}
+                </li>
+                :
+                <li>
+                    <i className="fa fa-certificate" aria-hidden="true"></i> Total-Seats: 0
+                </li>
+                }
                 <li><i></i></li>
             </ul>
             <h3>Add-ons</h3>
