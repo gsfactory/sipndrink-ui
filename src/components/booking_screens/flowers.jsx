@@ -1,6 +1,6 @@
 function Flowers(props) {
     console.log('flowers', props);
-    const s3Basepath = 'https://s3.amazonaws.com/client.limelox.com';
+    const s3Basepath = 'https://s3.amazonaws.com/client.limelox.com/sipndrink';
 
     const handleToggle = (id) => {
         // console.log('img toggled', id);

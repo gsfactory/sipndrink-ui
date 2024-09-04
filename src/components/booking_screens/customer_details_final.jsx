@@ -98,7 +98,7 @@ function CustomerDetailsFinalScreen(props) {
             <a className="btn btn-prev"
                 onClick={props.prevStep}>Previous</a>
 
-            <input value="Proceed to pay Advance" type="button" name="complete" className="btn btn-complete" 
+            <input value="Proceed to pay Advance" type="button" name="complete" className="btn" 
                 onClick={initiateBooking}
             />
         </div>

@@ -3,7 +3,7 @@ import { useState } from "react";
 function Cakes(props) {
     console.log('cakes', props);
 
-    const s3Basepath = 'https://s3.amazonaws.com/client.limelox.com';
+    const s3Basepath = 'https://s3.amazonaws.com/client.limelox.com/sipndrink';
 
     // const [isChecked, setIsChecked] = useState(false);
 

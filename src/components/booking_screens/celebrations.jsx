@@ -2,7 +2,7 @@ import { useState } from "react";
 
 function Celebrations(props) {
     console.log('celebrations', props);
-    const s3Basepath = 'https://s3.amazonaws.com/client.limelox.com';
+    const s3Basepath = 'https://s3.amazonaws.com/client.limelox.com/sipndrink';
 
     const [error, setError] = useState("")
 

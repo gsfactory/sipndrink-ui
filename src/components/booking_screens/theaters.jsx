@@ -3,7 +3,7 @@ import api_client from "../api/api_client";
 
 function Theaters(props) {
     console.log('theaters', props);
-    const s3Basepath = 'https://s3.amazonaws.com/client.limelox.com';
+    const s3Basepath = 'https://s3.amazonaws.com/client.limelox.com/sipndrink';
     
     const [error, setError] = useState("");
 
@@ -85,7 +85,7 @@ function Theaters(props) {
                             
                             <p>₹{theater.attributes.pricing_per_slot} for {theater.attributes.num_seats} or less people<br /> (Rs {theater.attributes.extra_seat_cost} per extra person)</p>
                             <span className="active">
-                                {props.slotsAvailability[theater.id]?.num_available} slots available on <samp>18-08-2024</samp>
+                                {props.slotsAvailability[theater.id]?.num_available} slots available on <samp>{props.bookingDate}</samp>
                             </span>
 
                             {props.slotsAvailability[theater.id]?.num_available > 0 ?

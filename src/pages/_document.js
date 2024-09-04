@@ -11,7 +11,6 @@ export default function Document() {
         <script src='/styles/assets/vendor/bootstrap/js/jquery.min.js'></script>
         <script src='https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js'></script>
         <script src='https://cdn.jsdelivr.net/npm/@splidejs/splide@4.1.4/dist/js/splide.min.js'></script>
-        <script src='/styles/assets/js/main.js'></script>
       </body>
     </Html>
   )

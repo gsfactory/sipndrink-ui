@@ -1,6 +1,7 @@
 import api_client from '@/components/api/api_client';
 import Footer from '@/components/layouts/footer';
 import Header from '@/components/layouts/header';
+import SEO from '@/components/seo/seo';
 import { getSession } from 'next-auth/react';
 import Head from 'next/head';
 import Link from 'next/link';
