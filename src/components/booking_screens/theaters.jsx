@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import api_client from "../api/api_client";
+import MyImage from "../utils/image";
 
 function Theaters(props) {
     console.log('theaters', props);
@@ -67,20 +68,28 @@ function Theaters(props) {
                 } */}
                 <div className="box-container row">
                  {props.theaters.map(theater => (
-                    <div className="col-md-4" key={theater.id}>
+                    <div className="col-lg-4 col-sm-6" key={theater.id}>
                         <div 
                             className={`box ${props.theater?.id === theater.id ? 'active' : props.slotsAvailability[theater.id]?.num_available === 0 ? 'inactive': ''}`} 
                             onClick={props.slotsAvailability[theater.id]?.num_available > 0 ? () => onTheaterSelect(theater) : undefined}
                             >
 
-                            <img 
+                            {/* <img 
                                 src={
                                     theater.attributes.photo.data[0].attributes.url.startsWith('/') 
                                     ? 
                                     `${process.env.NEXT_PUBLIC_API_URL}${theater.attributes.photo.data[0].attributes.url}` 
                                     : 
                                     `${s3Basepath}/${theater.attributes.photo.data[0].attributes.hash}${theater.attributes.photo.data[0].attributes.ext}`
-                                } />
+                                } /> */}
+                            <MyImage 
+                                src={
+                                    theater.attributes.photo.data[0].attributes.url.startsWith('/') 
+                                    ? 
+                                    `${process.env.NEXT_PUBLIC_API_URL}${theater.attributes.photo.data[0].attributes.url}` 
+                                    : 
+                                    `${s3Basepath}/${theater.attributes.photo.data[0].attributes.hash}${theater.attributes.photo.data[0].attributes.ext}`
+                                    } />
                             <h3>{theater.attributes.name}</h3>
                             
                             <p>₹{theater.attributes.pricing_per_slot} for {theater.attributes.num_seats} or less people<br /> (Rs {theater.attributes.extra_seat_cost} per extra person)</p>

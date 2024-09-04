@@ -1,3 +1,5 @@
+import MyImage from "../utils/image";
+
 function Flowers(props) {
     console.log('flowers', props);
     const s3Basepath = 'https://s3.amazonaws.com/client.limelox.com/sipndrink';
@@ -17,9 +19,12 @@ function Flowers(props) {
              {props.serviceMap['flowers'].map(decoration => (
                     <div className="col-md-4" key={decoration.id}>
                         <div className={`imagearea ${props.flowerIds.includes(decoration.id) ? 'active' : ''}`}>
-                            <img 
-                            onClick={() => handleToggle(decoration.id)}
-                            src={decoration.photo.data[0].attributes.url.startsWith('/') ? `${process.env.NEXT_PUBLIC_API_URL}${decoration.photo.data[0].attributes.url}` : `${s3Basepath}/${decoration.photo.data[0].attributes.hash}${decoration.photo.data[0].attributes.ext}`} />
+                            {/* <img 
+                                onClick={() => handleToggle(decoration.id)}
+                                src={decoration.photo.data[0].attributes.url.startsWith('/') ? `${process.env.NEXT_PUBLIC_API_URL}${decoration.photo.data[0].attributes.url}` : `${s3Basepath}/${decoration.photo.data[0].attributes.hash}${decoration.photo.data[0].attributes.ext}`} /> */}
+                            <MyImage 
+                                onClick={() => handleToggle(decoration.id)}
+                                src={decoration.photo.data[0].attributes.url.startsWith('/') ? `${process.env.NEXT_PUBLIC_API_URL}${decoration.photo.data[0].attributes.url}` : `${s3Basepath}/${decoration.photo.data[0].attributes.hash}${decoration.photo.data[0].attributes.ext}`} />
                         <h6>{decoration.name}</h6>
                         <h5>₹ {decoration.price}</h5>
                         </div>

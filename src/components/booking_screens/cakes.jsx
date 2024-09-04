@@ -1,25 +1,19 @@
 import { useState } from "react";
+import MyImage from "../utils/image";
 
 function Cakes(props) {
     console.log('cakes', props);
 
     const s3Basepath = 'https://s3.amazonaws.com/client.limelox.com/sipndrink';
 
-    // const [isChecked, setIsChecked] = useState(false);
-
     const handleCheckboxChange = (event) => {
         const checked = event.target.checked;
         props.setIsEggless(checked);
-        // setIsChecked(checked);
-        // console.log('Checkbox is now:', checked ? 'Checked' : 'Unchecked');
-        // Perform additional actions based on checked state
     };
 
     const handleToggle = (id) => {
         props.handleItemSelection(id, 'cake', true);
     };
-
-
 
     return ( 
         <div className="form-step celebra cakes active">
@@ -40,9 +34,12 @@ function Cakes(props) {
              {props.serviceMap['cake']
                 .filter((value) => !props.isEggless ? true : value.is_eggless === true)
                 .map(cake => (
-                    <div className="col-md-4" key={cake.id}>
+                    <div className="col-md-4 col-sm-12" key={cake.id}>
                         <div className={`imagearea ${props.cakeIds.includes(cake.id) ? 'active' : ''}`}>
-                        <img 
+                        {/* <img 
+                            onClick={() => handleToggle(cake.id)}
+                            src={cake.photo.data[0].attributes.url.startsWith('/') ? `${process.env.NEXT_PUBLIC_API_URL}${cake.photo.data[0].attributes.url}` : `${s3Basepath}/${cake.photo.data[0].attributes.hash}${cake.photo.data[0].attributes.ext}`} /> */}
+                        <MyImage 
                             onClick={() => handleToggle(cake.id)}
                             src={cake.photo.data[0].attributes.url.startsWith('/') ? `${process.env.NEXT_PUBLIC_API_URL}${cake.photo.data[0].attributes.url}` : `${s3Basepath}/${cake.photo.data[0].attributes.hash}${cake.photo.data[0].attributes.ext}`} />
                         <h6>{cake.name}</h6>

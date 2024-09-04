@@ -41,42 +41,45 @@ function BaseModal(props) {
     const [secondName, setSecondName] = useState("");
 
     useEffect(() => {
-        console.log("useEffect");
         updatePricing();
 
-        // const handleModalClose = () => {
-        //     console.log("Modal close handler");
-        //     // Clear your data here
-        //     if (modalRef.current) {
-        //         // const inputs = modalRef.current.querySelectorAll('input, textarea, select');
-        //         // inputs.forEach(input => input.value = '');
-        //         setStep(1);
-        //         setTheater(null);
-        //         setTheaterTimeSlots(null);
-        //         setPricing(0);
-        //         setBookingDate(getCurrentDate());
-        //         setTimeSlot(null);
-        //         setNumPersons(2);
-        //         setDecorationIds([]);
-        //         setCakeIds([]);
-        //         setExtraDecoIds([]);
-        //         setFlowerIds([]);
-        //         setPhotoIds([]);
-        //         setName("");
-        //         setMobile("");
-        //         setEmail("");
-        //     }
-        // };
+        const modalElement = modalRef.current;
 
-        // console.log("Setting modal close handler...");
-        // const modalElement = modalRef.current;
-        // modalElement.addEventListener('hidden.bs.modal', handleModalClose);
-
-        // return () => {
-        //     console.log("removing modal close handler...");
-        //     modalElement.removeEventListener('hidden.bs.modal', handleModalClose);
-        // };
+        console.log('debug 1');
+        // Add jQuery event listener for modal close event
+        $(modalRef.current).on('hidden.bs.modal', function () {
+            console.log('Modal closed');
+            clearState();
+            // Clear your data or perform any other actions here
+        });
+    
+        // Cleanup the event listener when the component unmounts
+        return () => {
+            $(modalRef.current).off('hidden.bs.modal');
+        };
     }, [decorationIds, cakeIds, extraDecoIds, flowerIds, photoIds, theater, numPersons, timeSlot]);
+
+    const clearState = () => {
+        setStep(1);
+        setTheater(null);
+        setTheaterTimeSlots(null);
+        setSlotsAvailability([]);
+        setPricing(0);
+        setBookingDate(getCurrentDate());
+        setTimeSlot(null);
+        setNumPersons(2);
+        setDecorationIds([]);
+        setCakeIds([]);
+        setExtraDecoIds([]);
+        setFlowerIds([]);
+        setPhotoIds([]);    
+        setIsEggless(false);
+        setName("");
+        setMobile("");
+        setEmail("");
+        setFirstName("");
+        setSecondName("");
+    }
 
     const nextStep = () => {
         setStep(prev => prev + 1)

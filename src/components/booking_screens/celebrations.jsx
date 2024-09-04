@@ -1,4 +1,5 @@
 import { useState } from "react";
+import MyImage from "../utils/image";
 
 function Celebrations(props) {
     console.log('celebrations', props);
@@ -44,11 +45,14 @@ function Celebrations(props) {
                     <div className="slider_area left-section ">
                     <div className="row box-container">
                         {props.serviceMap['decorations'].map(decoration => (
-                            <div className="col-md-6" key={decoration.id}>
+                            <div className="col-md-6 col-sm-12" key={decoration.id}>
                                 <div className={`imagearea ${props.decorationIds.includes(decoration.id) ? 'active' : ''}`}>
-                                    <img 
+                                    {/* <img 
                                     onClick={() => handleToggle(decoration.id)}
-                                    src={decoration.photo.data[0].attributes.url.startsWith('/') ? `${process.env.NEXT_PUBLIC_API_URL}${decoration.photo.data[0].attributes.url}` : `${s3Basepath}/${decoration.photo.data[0].attributes.hash}${decoration.photo.data[0].attributes.ext}`} />
+                                    src={decoration.photo.data[0].attributes.url.startsWith('/') ? `${process.env.NEXT_PUBLIC_API_URL}${decoration.photo.data[0].attributes.url}` : `${s3Basepath}/${decoration.photo.data[0].attributes.hash}${decoration.photo.data[0].attributes.ext}`} /> */}
+                                    <MyImage 
+                                        onClick={() => handleToggle(decoration.id)}
+                                        src={decoration.photo.data[0].attributes.url.startsWith('/') ? `${process.env.NEXT_PUBLIC_API_URL}${decoration.photo.data[0].attributes.url}` : `${s3Basepath}/${decoration.photo.data[0].attributes.hash}${decoration.photo.data[0].attributes.ext}`} />
                                 <h6>{decoration.name}</h6>
                                 <h5>₹ {decoration.price}</h5>
                                 </div>
