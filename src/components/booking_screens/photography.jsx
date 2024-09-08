@@ -26,8 +26,9 @@ function Photography(props) {
                                 onClick={() => handleToggle(decoration.id)}
                                 height="240"
                                 src={decoration.photo.data[0].attributes.url.startsWith('/') ? `${process.env.NEXT_PUBLIC_API_URL}${decoration.photo.data[0].attributes.url}` : `${s3Basepath}/${decoration.photo.data[0].attributes.hash}${decoration.photo.data[0].attributes.ext}`} />
-                        <h6>{decoration.name}</h6></div>
+                        <h6>{decoration.name}</h6>
                         <h5>₹ {decoration.price}</h5>
+                    </div>
                     </div>
                 ))}
                 </div>
