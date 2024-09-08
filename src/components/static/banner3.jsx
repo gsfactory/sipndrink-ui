@@ -2,6 +2,7 @@
 import '@splidejs/splide/dist/css/splide.min.css';
 import Splide from '@splidejs/splide';
 import { useEffect } from 'react';
+import Image from 'next/image';
 
 function Banner3() {
   useEffect(() => {
@@ -41,18 +42,41 @@ function Banner3() {
             <div className="container" data-aos="fade-up">
               <div className="section-header">
                 <h2>Let’s Celebrate</h2>
-                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry.</p>
+                <p>Life’s too short for ordinary parties! Roll the credits on dull celebrations and script your perfect day with
+                a private screening, delicious bites, and a blockbuster experience at Sip n Screen</p>
                 </div>
                 <section className="section slider__section">
                   <div className="container slider__wrapper">
                     <div className="slider__column splide">
                         <div className="splide__track">
                           <ul className="splide__list">
-                              <li className="splide__slide"><img src="https://s3.amazonaws.com/client.limelox.com/sipndrink/imgs/banner.jpg" alt="Slider" /></li>
-                              <li className="splide__slide"><img src="https://s3.amazonaws.com/client.limelox.com/sipndrink/imgs/banner.jpg" alt="Slider" /></li>
-                              <li className="splide__slide"><img src="https://s3.amazonaws.com/client.limelox.com/sipndrink/imgs/banner.jpg" alt="Slider" /></li>
-                              <li className="splide__slide"><img src="https://s3.amazonaws.com/client.limelox.com/sipndrink/imgs/banner.jpg" alt="Slider" /></li>
-                              <li className="splide__slide"><img src="https://s3.amazonaws.com/client.limelox.com/sipndrink/imgs/banner.jpg" alt="Slider" /></li>
+                              <li className="splide__slide">
+                                {/* <img src="https://s3.amazonaws.com/client.limelox.com/sipndrink/home/b3-1.jpg" alt="Slider" /> */}
+                                <Image
+                                  src={"https://s3.amazonaws.com/client.limelox.com/sipndrink/home/b3-1.jpg"}
+                                  alt="friends"
+                                  fill
+                                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                />
+                              </li>
+                              <li className="splide__slide">
+                                {/* <img src="https://s3.amazonaws.com/client.limelox.com/sipndrink/home/b3-2.jpg" alt="Slider" /> */}
+                                <Image
+                                  src={"https://s3.amazonaws.com/client.limelox.com/sipndrink/home/b3-2.jpg"}
+                                  alt="friends"
+                                  fill
+                                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                />
+                              </li>
+                              <li className="splide__slide">
+                                {/* <img src="https://s3.amazonaws.com/client.limelox.com/sipndrink/home/b3-3.jpg" alt="Slider" /> */}
+                                <Image
+                                  src={"https://s3.amazonaws.com/client.limelox.com/sipndrink/home/b3-3.jpg"}
+                                  alt="friends"
+                                  fill
+                                  sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
+                                />
+                              </li>
                               </ul>
                         </div>
                     </div>

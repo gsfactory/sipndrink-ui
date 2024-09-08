@@ -42,10 +42,20 @@ function Time(props) {
                                 value={props.timeSlot || props.theaterTimeSlots[0].id}
                                 onChange={(e) => props.setTimeSlot(e.target.value)}
                             >
+                                {/* <option>
+                                    Select a timeslot
+                                </option> */}
                                 {props.theaterTimeSlots.map((item) => (
-                                    <option key={item.id} value={item.id}>
-                                        {`${item.attributes.start_time.slice(0, 5)} - ${item.attributes.end_time.slice(0, 5)} - ${props.slotsAvailability[props.theater.id]['availability'][item.id] === true ? "Available" : "Unavailable" }`}
-                                    </option>
+                                    <option 
+                                    key={item.id} 
+                                    value={item.id} 
+                                    disabled={!props.slotsAvailability[props.theater.id]['availability'][item.id]} // Disable if not available
+                                  >
+                                    {`${item.attributes.start_time.slice(0, 5)} - ${item.attributes.end_time.slice(0, 5)} `}
+                                    <span className={props.slotsAvailability[props.theater.id]['availability'][item.id] === true ? "text-success" : "text-danger"}>
+                                      {props.slotsAvailability[props.theater.id]['availability'][item.id] === true ? "" : "unavailable"}
+                                    </span>
+                                  </option>
                                     ))}
                             </select>
                         </div>

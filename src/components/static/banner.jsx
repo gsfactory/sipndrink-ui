@@ -1,4 +1,5 @@
 
+import Image from 'next/image';
 import { useState, useEffect, useRef } from 'react';
 
 const Banner = () => {
@@ -8,9 +9,12 @@ const Banner = () => {
   const intervalRef = useRef(null);
 
   const slides = [
-    { id: 1, imageUrl: 'https://s3.amazonaws.com/client.limelox.com/sipndrink/imgs/banner.jpg' },
-    { id: 2, imageUrl: 'https://s3.amazonaws.com/client.limelox.com/sipndrink/banner/party-8080105_640.jpg' },
-    { id: 3, imageUrl: 'https://s3.amazonaws.com/client.limelox.com/sipndrink/banner/concert-2527495_640.jpg' }
+    // { id: 1, imageUrl: 'https://s3.amazonaws.com/client.limelox.com/sipndrink/imgs/banner.jpg' },
+    // { id: 2, imageUrl: 'https://s3.amazonaws.com/client.limelox.com/sipndrink/banner/party-8080105_640.jpg' },
+    // { id: 3, imageUrl: 'https://s3.amazonaws.com/client.limelox.com/sipndrink/banner/concert-2527495_640.jpg' }
+    { id: 1, imageUrl: 'https://s3.amazonaws.com/client.limelox.com/sipndrink/home/slide1.jpg' },
+    { id: 2, imageUrl: 'https://s3.amazonaws.com/client.limelox.com/sipndrink/home/slide2.jpg' },
+    { id: 3, imageUrl: 'https://s3.amazonaws.com/client.limelox.com/sipndrink/home/slide3.jpg' },
   ];
 
   useEffect(() => {
