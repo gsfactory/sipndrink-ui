@@ -31,7 +31,9 @@
   z-index: 9999999;
 background: rgba(0, 0, 0, 0.8);
 }
-
+.featorebox p {
+  min-height: 100px;
+}
 /* Smooth scroll behavior */
 :root {
   scroll-behavior: smooth;
@@ -2756,9 +2758,38 @@ button.close {
 .centerbtn.onlythiscenter a.btn.btn-next {
   margin-bottom: 30px;
 }
+.featorebox p {
+  min-height:inherit;
+}
+.total_pp {
+  border: 2px dashed #000;
+  text-align: center;
+  margin: 20px auto;
+  font-size: 20px;
+  position: relative;
+  width: 100%;
+  max-width: 100%;
+  bottom: 0;
+}
+.btn-group .text-danger {
+  margin: 10px 0 !important;
+  display: block;
+  float: left;
+}
+.btn-group {
+  text-align: center;
+  width: 100%;
+  min-width: 100%;
+}
+.welcomearea {
+  margin-left: 0;
+}
 }
 .box-container.row .col-lg-4.col-sm-6 .box img {
     width: 100%;
     height: 140px;
     object-fit: cover;
+}
+.welcomearea {
+  margin-left: 15px;
 }
