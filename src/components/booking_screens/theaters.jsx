@@ -74,14 +74,6 @@ function Theaters(props) {
                             onClick={props.slotsAvailability[theater.id]?.num_available > 0 ? () => onTheaterSelect(theater) : undefined}
                             >
 
-                            {/* <img 
-                                src={
-                                    theater.attributes.photo.data[0].attributes.url.startsWith('/') 
-                                    ? 
-                                    `${process.env.NEXT_PUBLIC_API_URL}${theater.attributes.photo.data[0].attributes.url}` 
-                                    : 
-                                    `${s3Basepath}/${theater.attributes.photo.data[0].attributes.hash}${theater.attributes.photo.data[0].attributes.ext}`
-                                } /> */}
                             <MyImage 
                                 src={
                                     theater.attributes.photo.data[0].attributes.url.startsWith('/') 
@@ -93,13 +85,13 @@ function Theaters(props) {
                             <h3>{theater.attributes.name}</h3>
                             
                             <p>₹{theater.attributes.pricing_per_slot} for {theater.attributes.num_seats} or less people<br /> (Rs {theater.attributes.extra_seat_cost} per extra person)</p>
-                            <span className="active">
+                            <span className={`${props.slotsAvailability[theater.id]?.num_available === 0 ? 'active' : ""}`} >
                                 {props.slotsAvailability[theater.id]?.num_available} slots available on <samp>{props.bookingDate}</samp>
                             </span>
 
                             {props.slotsAvailability[theater.id]?.num_available > 0 ?
                                 <a className="btn btn-next booknoe"
-                                    onClick={(event) => onTheaterSelect(theater)}
+                                    // onClick={(event) => onTheaterSelect(theater)}
                                 >Book Now</a>
                             :
                                 <a className="btn btn-next booknoe text-muted bg-light disabled" aria-disabled="true">
@@ -115,7 +107,6 @@ function Theaters(props) {
                     </div>
                     ))}
                      
-                <p className="note-detls">Note: Timing of the photography is according to the availability of the photographer.</p>     
                  </div>
             </div>
             <div className="btn-group">

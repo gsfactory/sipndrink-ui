@@ -51,31 +51,31 @@ function Banner3() {
                         <div className="splide__track">
                           <ul className="splide__list">
                               <li className="splide__slide">
-                                {/* <img src="https://s3.amazonaws.com/client.limelox.com/sipndrink/home/b3-1.jpg" alt="Slider" /> */}
-                                <Image
+                                <img src="https://s3.amazonaws.com/client.limelox.com/sipndrink/home/b3-1.jpg" alt="Slider" />
+                                {/* <Image
                                   src={"https://s3.amazonaws.com/client.limelox.com/sipndrink/home/b3-1.jpg"}
                                   alt="friends"
                                   fill
                                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                                />
+                                /> */}
                               </li>
                               <li className="splide__slide">
-                                {/* <img src="https://s3.amazonaws.com/client.limelox.com/sipndrink/home/b3-2.jpg" alt="Slider" /> */}
-                                <Image
+                                <img src="https://s3.amazonaws.com/client.limelox.com/sipndrink/home/b3-2.jpg" alt="Slider" />
+                                {/* <Image
                                   src={"https://s3.amazonaws.com/client.limelox.com/sipndrink/home/b3-2.jpg"}
                                   alt="friends"
                                   fill
                                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                                />
+                                /> */}
                               </li>
                               <li className="splide__slide">
-                                {/* <img src="https://s3.amazonaws.com/client.limelox.com/sipndrink/home/b3-3.jpg" alt="Slider" /> */}
-                                <Image
+                                <img src="https://s3.amazonaws.com/client.limelox.com/sipndrink/home/b3-3.jpg" alt="Slider" />
+                                {/* <Image
                                   src={"https://s3.amazonaws.com/client.limelox.com/sipndrink/home/b3-3.jpg"}
                                   alt="friends"
                                   fill
                                   sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                                />
+                                /> */}
                               </li>
                               </ul>
                         </div>

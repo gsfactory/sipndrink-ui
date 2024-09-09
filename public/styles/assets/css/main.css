@@ -673,7 +673,7 @@ section.ourworkprocess h2 {
   color: #000;
   text-align: center;
   font-family: Poppins;
-  font-size:22px;
+  font-size:18px;
   font-style: normal;
   font-weight: 600;
   line-height: 28px;
@@ -1398,7 +1398,7 @@ table.techinfo td {
   color: #fff;
 }
 button.close {
-  background: #fff;
+  background: #fac601;
   opacity: 10;
   padding: 10px;
   position: fixed;
@@ -1855,6 +1855,10 @@ ul.digree li p {
 .box h3 {
   color: #000;
 }
+.tab:hover .caption p {
+  width: 90%;
+  margin: 0px auto;
+}
 @media (max-width:1260px) {
   .content-details ul {
     font-size: 12px !important;
@@ -1985,7 +1989,7 @@ color:#fff;
   position: absolute;
 }
 .slider_area .col-md-4 {
-padding-left: 5px;
+/*padding-left: 5px;*/
 padding-right: 5px;
 }
 .btn {
@@ -2107,8 +2111,10 @@ left:50px;
 right:30px;
 }
 .welcomearea >.row > .col-md-9, .welcomearea >.row > .col-md-3 {
-padding-left: 0;
 padding-right: 0;
+}
+.welcomearea >.row > .col-md-3{
+  padding-left: 0;
 }
 .welcometext::before {
 background-color:rgba(0, 0, 0, 0.6);
@@ -2188,10 +2194,14 @@ align-items: center;
 border-right: 2px solid #000;
 }
 .total_pp {
-border: 2px dashed #000;
-text-align: center;
-margin: 20px auto;
-font-size: 20px;
+  border: 2px dashed #000;
+  text-align: center;
+  margin: 20px auto;
+  font-size: 20px;
+  position: absolute;
+  width: 100%;
+  max-width: 250px;
+  bottom: 0;
 }
 .total_pp h6{
 font-size: 20px;
@@ -2220,7 +2230,15 @@ float: right;
 }
 .imagearea img {
 width: 100%;
+object-fit: cover;
 } 
+.com_form .text-danger {
+  background: #fac601;
+  padding: 5px;
+  /* color: #fff !important; */
+  border-radius: 5px;
+  margin-top: 5px;
+}
 .imagearea {
 background: #fff;
 padding: 5px;
@@ -2249,6 +2267,16 @@ font-size: 12px;
 margin-top: 0;
 padding:0px 0 0 15px;
 font-weight: normal;
+color:#fff;
+}
+.btn-group .text-danger {
+  background: #fff;
+  padding: 15px;
+  margin: 0px !important;
+  line-height: 18px;
+  height: auto;
+  border-radius: 5px;
+  font-weight: bold;
 }
 .cakes input[type=checkbox]{
 height: 0;
@@ -2401,6 +2429,9 @@ border-radius:10px;
 .box img {
 max-width: 100%;
 height: auto;
+height: 140px;
+width: 100%;
+object-fit: cover;
 }
 
 .box h3 {
@@ -2457,6 +2488,7 @@ cursor: pointer;
 h2.sss {
   font-size: 42px !important;
 }
+
 @media (max-width: 768px) {
   h2.sss {
     font-size:24px !important;
@@ -2524,7 +2556,7 @@ h2.sss {
 .box img {
   max-width: 100%;
   height: auto;
-  max-height: 120px;
+  max-height: 150px;
   object-fit: cover;
 }
 .box p {
@@ -2590,7 +2622,7 @@ h2.sss {
 .box img {
   max-width: 100%;
   height: auto;
-  max-height: 100px;
+  max-height: 150px;
   object-fit: cover;
 }
 ul.header-right {
@@ -2724,4 +2756,9 @@ button.close {
 .centerbtn.onlythiscenter a.btn.btn-next {
   margin-bottom: 30px;
 }
+}
+.box-container.row .col-lg-4.col-sm-6 .box img {
+    width: 100%;
+    height: 140px;
+    object-fit: cover;
 }

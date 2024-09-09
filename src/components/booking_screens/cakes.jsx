@@ -24,7 +24,7 @@ function Cakes(props) {
                     onChange={handleCheckboxChange}
                 />
                 <label htmlFor="switch">
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 </label>
             </span>
         </h3>
@@ -48,7 +48,7 @@ function Cakes(props) {
                     </div>
                 ))}
 
-                <p className="note-detls">Note: Decorations are not customizable. Please select predefined add-ons in the next windows.</p>
+                <p className="note-detls text-white">Note: Decorations are not customizable. Please select predefined add-ons in the next windows.</p>
              </div>
          </div>
          <div className="btn-group">

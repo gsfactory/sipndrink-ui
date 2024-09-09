@@ -59,11 +59,6 @@ function CustomerDetailsFinalScreen(props) {
         <h3><span> Enter your details to proceed further</span></h3>
        
        <div className="com_form"> <div className="input-group">
-            {error && 
-                <div className="text-danger">
-                    {error}
-                </div>
-            }
             <div className="input-box">
                 <input  name="fname" type="text" placeholder="Full Name" 
                     value={props.name}
@@ -91,6 +86,11 @@ function CustomerDetailsFinalScreen(props) {
                     <input id="github" name="email" type="email" placeholder="Enter Coupon Code" />
                     <input type="submit" value="APPLY" name="apply" />
                 </div>
+                {error && 
+                    <div className="text-danger">
+                        {error}
+                    </div>
+                }
             </div>
         </div>
     </div>
