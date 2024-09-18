@@ -652,7 +652,7 @@ section.ourworkprocess h2 {
 }
 .featorebox {
   border-radius: 6px;
-  background: #D9D9D9;
+  background: #fac601;
   padding: 10px;
   text-align: center;
 }
@@ -715,7 +715,7 @@ section.ourworkprocess h2 {
   font-size: 15px;
 }
 section.celebrate.stats-counter {
-  background: #D9D9D9;
+  background: #fac601;
   position: relative;
 }
 .boder_area.borderarea_down {
@@ -1887,8 +1887,9 @@ ul.digree li p {
       margin: 1.75rem auto;
   }
   .modal-dialog {
-    max-width:80%;
-    margin:90px auto;
+    width: 100%;
+    margin: 90px auto;
+    max-width: 1289px;
 }
 
 label {
@@ -2148,7 +2149,7 @@ background-image: url(../img/Vector_white.png);
 background-repeat: repeat-y;
 background-position: left;
 height:600px;
-width: 300px;
+width:100%;
 left:-15px;
 }
 
@@ -2782,7 +2783,10 @@ button.close {
   min-width: 100%;
 }
 .welcomearea {
-  margin-left: 0;
+  margin-left: 0 !important;
+}
+.welcomearea>.row>.col-md-3 {
+  padding-left: 15px;
 }
 }
 .box-container.row .col-lg-4.col-sm-6 .box img {
