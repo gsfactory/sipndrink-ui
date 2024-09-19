@@ -16,9 +16,8 @@ function Banner2() {
   <div className="row gy-4">
     <div className="col-lg-4 col-sm-4 d-flex">
       <div className="featorebox card h-100">
-        {/* <img src="https://s3.amazonaws.com/client.limelox.com/sipndrink/home/b2-1.jpg" alt="friends" className="img-fluid" /> */}
         <Image
-          src={"https://s3.amazonaws.com/client.limelox.com/sipndrink/home/b2-1.jpg"}
+          src={"https://s3.amazonaws.com/client.limelox.com/sipndrink/home/Cafe_01.png"}
           alt="friends"
           width={268}
           height={200}
@@ -26,20 +25,17 @@ function Banner2() {
           className="img-fluid" // Optional, for extra Bootstrap styling
         />
         <div className="section-header">
-          <h5>Gather with Friends</h5>
+          <h5>Café for You</h5>
           <p>
-            Turn any day into a celebration at Sip n Screen. Catch up with friends over great food and your
-            favorite movie, all in the privacy of our exclusive theater spaces.
-            With gourmet bites and custom cocktails, we offer a cinematic experience like no other—where the company is as important as the film.
+          Feel the warmth of every sip, the flavor of every bite, and the mesmerizing atmosphere that makes every moment worth savoring. Whether you're here for a blockbuster or a brew, we’ve crafted the perfect space to unwind and immerse yourself. 
           </p>
         </div>
       </div>
     </div>
     <div className="col-lg-4 col-sm-4 d-flex">
       <div className="featorebox card h-100">
-        {/* <img src="https://s3.amazonaws.com/client.limelox.com/sipndrink/home/b2-2.jpg" alt="date nights" className="img-fluid" /> */}
         <Image
-          src={"https://s3.amazonaws.com/client.limelox.com/sipndrink/home/b2-2.jpg"}
+          src={"https://s3.amazonaws.com/client.limelox.com/sipndrink/home/Private_Theater_02.png"}
           alt="date night"
           width={268}
           height={200}
@@ -49,9 +45,7 @@ function Banner2() {
         <div className="section-header">
           <h5>The Perfect Date Night</h5>
           <p>
-            Make date night special with a
-            cozy dinner and a private screening. Sip handcrafted
-            drinks and enjoy a film that’s just for the two of you.
+          Make date night special with a cozy dinner and a private screening. Sip handcrafted drinks and enjoy a film that’s just for the two of you , an unforgettable experience wrapped in cozy vibes, ambient lighting, and cinematic charm. 
           </p>
         </div>
       </div>
@@ -59,7 +53,7 @@ function Banner2() {
     <div className="col-lg-4 col-sm-4 d-flex">
       <div className="featorebox card h-100">
         <Image
-          src="https://s3.amazonaws.com/client.limelox.com/sipndrink/home/b2-3.jpg"
+          src="https://s3.amazonaws.com/client.limelox.com/sipndrink/home/Celebration_03.png"
           alt="family time"
           width={268}
           height={200}
@@ -67,10 +61,9 @@ function Banner2() {
           className="img-fluid" // Optional, for extra Bootstrap styling
         />
         <div className="section-header">
-          <h5>Family Time Redefined</h5>
+          <h5>Celebration</h5>
           <p>
-            Enjoy family time in our private theaters, where kids and adults alike can share in the joy of
-            movies and great food. It’s the perfect weekend treat!
+          Turn any day into a celebration at Sip n Screen. Catch up with friends over great food and your favorite movie, all in the privacy of our exclusive theater spaces. With gourmet bites and custom cocktails, we offer a cinematic experience like no other—where the company is as important as the film.
           </p>
         </div>
       </div>

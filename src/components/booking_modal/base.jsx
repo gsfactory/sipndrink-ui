@@ -258,7 +258,7 @@ function BaseModal(props) {
                         />
                     }
 
-                    {step === 7 &&
+                    {/* {step === 7 &&
                         <Flowers 
                             nextStep={nextStep}
                             prevStep={prevStep}
@@ -276,9 +276,9 @@ function BaseModal(props) {
                             serviceMap={props.serviceMap}
                             photoIds={photoIds}
                         />
-                    }
+                    } */}
 
-                    {step === 9 &&
+                    {step === 7 &&
                         <CustomerDetailsFinalScreen 
                             nextStep={nextStep}
                             prevStep={prevStep}

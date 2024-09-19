@@ -4,6 +4,9 @@ function Time(props) {
     const desc = props.theater.attributes.description.split("\n");
 
     const s3Basepath = 'https://s3.amazonaws.com/client.limelox.com/sipndrink';
+    const startNumber = props.theater.attributes.min_num_people == props.theater.attributes.num_seats ? props.theater.attributes.num_seats : 1;
+    console.log('startNumber', startNumber);
+    
     const max_seats = props.theater.attributes.max_extra_seats + props.theater.attributes.num_seats;
     return ( 
         <div className="form-step active">
@@ -65,9 +68,9 @@ function Time(props) {
                             <select 
                                 value={props.numPersons || 2}
                                 onChange={(e) => props.setNumPersons(e.target.value)}>
-                                {Array.from({ length: max_seats }, (_, i) => (
-                                <option key={i + 1} value={i + 1}>
-                                    {i + 1}
+                                {Array.from({ length: max_seats - startNumber + 1 }, (_, i) => (
+                                <option key={i + startNumber} value={i + startNumber}>
+                                    {i + startNumber}
                                 </option>
                                 ))}
                             </select>

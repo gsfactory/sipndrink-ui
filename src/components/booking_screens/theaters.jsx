@@ -53,7 +53,6 @@ function Theaters(props) {
             console.log('Error...');
             console.log(api_client.getErrorString(error));
         }
-        // console.log('timeslots', timeslots.data);
     }
 
     return ( 
@@ -61,11 +60,6 @@ function Theaters(props) {
             <h3>Choose Your Theater</h3>
             
             <div className="left-section">
-                {/* {error && 
-                    <div className="text-danger">
-                        Please select a theater
-                    </div>
-                } */}
                 <div className="box-container row">
                  {props.theaters.map(theater => (
                     <div className="col-lg-4 col-sm-6" key={theater.id}>
@@ -84,24 +78,30 @@ function Theaters(props) {
                                     } />
                             <h3>{theater.attributes.name}</h3>
                             
-                            <p>₹{theater.attributes.pricing_per_slot} for {theater.attributes.num_seats} or less people<br /> (Rs {theater.attributes.extra_seat_cost} per extra person)</p>
+                            {theater.attributes.min_num_people == theater.attributes.num_seats ?
+                                <p>₹{theater.attributes.pricing_per_slot} for {theater.attributes.num_seats}<br />&nbsp;</p>
+                            :
+                                <p>₹{theater.attributes.pricing_per_slot} for {theater.attributes.num_seats} or less people<br /> (Rs {theater.attributes.extra_seat_cost} per extra person)</p>
+                            }
+
                             <span className={`${props.slotsAvailability[theater.id]?.num_available === 0 ? 'active' : ""}`} >
                                 {props.slotsAvailability[theater.id]?.num_available} slots available on <samp>{props.bookingDate}</samp>
                             </span>
 
                             {props.slotsAvailability[theater.id]?.num_available > 0 ?
                                 <a className="btn btn-next booknoe"
-                                    // onClick={(event) => onTheaterSelect(theater)}
                                 >Book Now</a>
                             :
                                 <a className="btn btn-next booknoe text-muted bg-light disabled" aria-disabled="true">
                                     Unavailable
                                 </a>
-                                // <button type="button" class="btn btn-next booknoe" disabled>
-                                //     Unavailable
-                                // </button>
                             }
+                            {theater.attributes.min_num_people == theater.attributes.num_seats ?
+                            <span className="noper">{theater.attributes.num_seats} People</span>
+                            :
                             <span className="noper">{theater.attributes.min_num_people} - {theater.attributes.num_seats + theater.attributes.max_extra_seats} People</span>
+                            }
+                            
 
                         </div>
                     </div>
