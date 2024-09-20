@@ -12,7 +12,7 @@ function Banner4() {
                 <div className="col-lg-4 col-sm-4 d-flex">
                   <div className="featorebox card h-100 d-flex flex-column">
                     <Image
-                      src={"https://s3.amazonaws.com/client.limelox.com/sipndrink/home/b4-1.jpg"}
+                      src={"https://s3.amazonaws.com/client.limelox.com/sipndrink/home/Working_space_01_20sep.jpg"}
                       alt="friends"
                       width={268}
                       height={200}
@@ -44,7 +44,7 @@ function Banner4() {
                 <div className="col-lg-4 col-sm-4 d-flex">
                   <div className="featorebox card h-100 d-flex flex-column">
                     <Image
-                      src={"https://s3.amazonaws.com/client.limelox.com/sipndrink/home/b4-3.jpg"}
+                      src={"https://s3.amazonaws.com/client.limelox.com/sipndrink/home/Theater_03_20sep.png"}
                       alt="movies"
                       width={268}
                       height={200}

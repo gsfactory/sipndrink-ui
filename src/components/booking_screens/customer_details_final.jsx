@@ -8,10 +8,21 @@ function CustomerDetailsFinalScreen(props) {
     const router = useRouter();
     const { setData } = useData();
     const [error, setError] = useState("");
+    const [policyError, setPolicyError] = useState("");
+
+    const [isChecked, setIsChecked] = useState(false);
+    const handleCheckboxChange = (event) => {
+        setIsChecked(event.target.checked);
+    };
 
     const initiateBooking = async () => {
         if (!props.mobile || !props.name || !props.email) {
             setError("Please fill all details name/number/email");
+            return;
+        }
+
+        if (!isChecked) {
+            setPolicyError("You need to accept the policy");
             return;
         }
         const booking = {
@@ -89,6 +100,31 @@ function CustomerDetailsFinalScreen(props) {
                 {error && 
                     <div className="text-danger">
                         {error}
+                    </div>
+                }
+            </div>
+        </div>
+        <div className="applynote">
+            <div className="input-group">
+                <div class="row align-items-center">
+                    <div className='col-auto'>
+                        <input
+                            type="checkbox"
+                            name='acceptPolicy'
+                            checked={isChecked} // Controlled component
+                            onChange={handleCheckboxChange}
+                        />
+                    </div>
+                    <div className='col' style={{ marginLeft: '-20px' }}>
+                        <p className="mb-0">
+                            I accept the 
+                            <a href="/privacy-policy" target="_blank" className="text-primary"> Privacy Policy </a>
+                            of the Website</p>
+                    </div>
+                </div>
+                {policyError && 
+                    <div className="text-danger">
+                        {policyError}
                     </div>
                 }
             </div>

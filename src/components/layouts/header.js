@@ -13,7 +13,7 @@ function Header() {
               <a className="nav-brand" href="/"><img src="/logo.svg" /></a>
               </div>
               <ul className="header-right">
-                  <li><a href="#"><i className="fa fa-whatsapp"></i>  +91 8162658928</a></li>
+                  <li><a href="#"><i className="fa fa-whatsapp"></i>  +91 9492500886</a></li>
                   <li>
                     <a data-toggle="modal" data-target="#myModal" className="bookbtn">Book Now</a>
                   </li>

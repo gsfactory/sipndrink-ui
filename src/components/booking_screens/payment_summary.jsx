@@ -6,7 +6,12 @@ function PaymentSummary(props) {
             <h3>{props.businessDetails.attributes.name}</h3>
             <ul>
                 <li><i className="fa fa-phone"></i> +91 {props.businessDetails.attributes.mobile}</li>
-                <li><i className="fa fa-map-marker"></i> {props.businessDetails.attributes.address}</li>
+                <li><i className="fa fa-map-marker"></i>
+                  {/* {props.businessDetails.attributes.address} */}
+                  <a href="https://shorturl.at/PYwPw" className="text-primary" target="_blank">
+                    Hyderabad - 49
+                  </a>
+                </li>
                 <li><i className="fa fa-video-camera"></i>
                 {props.theater ? props.theater.attributes.name : "Select a Theater"}
                 </li>

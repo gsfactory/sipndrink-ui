@@ -51,7 +51,7 @@ function Banner3() {
                         <div className="splide__track">
                           <ul className="splide__list">
                               <li className="splide__slide">
-                                <img src="https://s3.amazonaws.com/client.limelox.com/sipndrink/home/b3-1.jpg" alt="Slider" />
+                                <img src="https://s3.amazonaws.com/client.limelox.com/sipndrink/home/Celebrate_01_20sep.png" alt="Slider" />
                                 {/* <Image
                                   src={"https://s3.amazonaws.com/client.limelox.com/sipndrink/home/b3-1.jpg"}
                                   alt="friends"
@@ -60,7 +60,7 @@ function Banner3() {
                                 /> */}
                               </li>
                               <li className="splide__slide">
-                                <img src="https://s3.amazonaws.com/client.limelox.com/sipndrink/home/b3-2.jpg" alt="Slider" />
+                                <img src="https://s3.amazonaws.com/client.limelox.com/sipndrink/home/Celebrate_02_20sep.png" alt="Slider" />
                                 {/* <Image
                                   src={"https://s3.amazonaws.com/client.limelox.com/sipndrink/home/b3-2.jpg"}
                                   alt="friends"
@@ -69,7 +69,7 @@ function Banner3() {
                                 /> */}
                               </li>
                               <li className="splide__slide">
-                                <img src="https://s3.amazonaws.com/client.limelox.com/sipndrink/home/b3-3.jpg" alt="Slider" />
+                                <img src="https://s3.amazonaws.com/client.limelox.com/sipndrink/home/Celebrate_03_20sep.png" alt="Slider" />
                                 {/* <Image
                                   src={"https://s3.amazonaws.com/client.limelox.com/sipndrink/home/b3-3.jpg"}
                                   alt="friends"

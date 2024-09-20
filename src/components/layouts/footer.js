@@ -8,7 +8,8 @@ function Footer() {
             <div className="col-lg-4 col-md-4 footer-links">
               <h4>Useful Links</h4>
               <ul>
-                <li><a href="#">Privacy Policy</a></li>
+                <li><a href="/privacy-policy">Privacy Policy</a></li>
+                <li><a href="/menu">Our Menu Card</a></li>
                 <li><a href="#"> Terms & Conditions</a></li>
                 <li><a href="#">Refund Policy</a></li>
               
@@ -17,7 +18,7 @@ function Footer() {
             <div className="col-lg-4 col-md-4 footer-links">
               <h4>Contact Us</h4>
               <ul>
-                <li><a href="#"><i className="fa fa-phone"></i> +91 1234567890</a></li>
+                <li><a href="#"><i className="fa fa-phone"></i> +91 9492500886</a></li>
                 <li><a href="#"><i className="fa fa-envelope"></i> sipnscreen@gmail.com</a></li>
                 <li><a href="#"><i className="fa fa-map-marker"></i> Hyderabad</a></li>
               </ul>

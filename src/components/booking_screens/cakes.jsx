@@ -17,19 +17,14 @@ function Cakes(props) {
 
     return ( 
         <div className="form-step celebra cakes active">
-        <h3> Cakes 
-            <span>
-                <input type="checkbox" id="switch" 
-                    checked={props.isEggless} 
-                    onChange={handleCheckboxChange}
-                />
-                <label htmlFor="switch">
-                    &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-                </label>
-            </span>
-        </h3>
+        <h3> Cakes </h3>
         
         <div className="slider_area left-section ">
+            
+        <p className="note-detls text-white text-left">
+        Images are for demonstration purposes only. Actual cake may look different - Cake size- 1 kg 
+            </p>
+
             <div className="row box-container">
              {props.serviceMap['cake']
                 .filter((value) => !props.isEggless ? true : value.is_eggless === true)
@@ -47,8 +42,6 @@ function Cakes(props) {
                         </div>
                     </div>
                 ))}
-
-                <p className="note-detls text-white">Note: Decorations are not customizable. Please select predefined add-ons in the next windows.</p>
              </div>
          </div>
          <div className="btn-group">
