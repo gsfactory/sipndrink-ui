@@ -2,6 +2,7 @@ import Header from '@/components/layouts/header';
 import Footer from '@/components/layouts/footer';
 import SEO from '@/components/seo/seo';
 import api_client from '@/components/api/api_client';
+import BaseModal from '@/components/booking_modal/base';
 
 export default function PrivacyPolicy(props) {
   return (

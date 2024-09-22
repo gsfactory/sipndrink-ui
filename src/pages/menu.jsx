@@ -18,14 +18,21 @@ export default function Menu(props) {
   <div className="section-header">
     <h1 className="text-center">Our Menu</h1>
     
-    <div style={{ height: '100vh' }}>
+    {/* <div style={{ height: '100vh' }}>
       <embed
         src="https://s3.amazonaws.com/client.limelox.com/sipndrink/home/final_menu.pdf"
         type="application/pdf"
         width="100%"
         height="100%"
       />
-    </div>
+    </div> */}
+    <a 
+      href="https://s3.amazonaws.com/client.limelox.com/sipndrink/home/final_menu.pdf" 
+      target="_blank" className='text-primary'
+      rel="noopener noreferrer"
+    >
+      Click to Open menu in new tab
+    </a>
 
     </div>
     </div>

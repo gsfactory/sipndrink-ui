@@ -9,10 +9,18 @@ function Footer() {
               <h4>Useful Links</h4>
               <ul>
                 <li><a href="/privacy-policy">Privacy Policy</a></li>
-                <li><a href="/menu">Our Menu Card</a></li>
-                <li><a href="#"> Terms & Conditions</a></li>
-                <li><a href="#">Refund Policy</a></li>
-              
+                <li>
+                <a 
+                  href="https://s3.amazonaws.com/client.limelox.com/sipndrink/home/final_menu.pdf" 
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  SipnScreen Menu
+                </a>
+                </li>
+                <li><a href="privacy-policy"> Terms & Conditions</a></li>
+                <li><a href="refund-policy">Refund Policy</a></li>
+                <li><a href="/bookings">Admin Area</a></li>
               </ul>
             </div>
             <div className="col-lg-4 col-md-4 footer-links">
@@ -20,10 +28,7 @@ function Footer() {
               <ul>
                 <li><a href="#"><i className="fa fa-phone"></i> +91 9492500886</a></li>
                 <li><a href="#"><i className="fa fa-envelope"></i> sipnscreen@gmail.com</a></li>
-                <li><a href="https://shorturl.at/PYwPw"><i className="fa fa-map-marker"></i> 
-                    Hyderabad - 49
-                </a></li>
-                <li><a href="#"><i className="fa fa-map-marker"></i> 
+                <li><a href="https://maps.app.goo.gl/fS4BmWx5bvXVjUL69" target="_blank"><i className="fa fa-map-marker"></i> 
                 3rd floor, Sai Krishna Capital, Gopal Nagar, Hafeezpet, Hyderabad- 49
                 </a></li>
               </ul>
@@ -32,9 +37,9 @@ function Footer() {
               <h4>Social Media</h4>
               <div className="fcontact">
               <ul>
-                <li><a href="#"><img src="/styles/assets/img/u.png" /></a></li>
-                <li><a href="#"><img src="/styles/assets/img/i.png" /></a></li>
-                <li><a href="#"><img src="/styles/assets/img/f.png" /></a></li>
+                <li><a href="https://youtube.com/@sipnscreen-social?si=KoUjyow7Kmx9xaCz" target="_blank"><img src="/styles/assets/img/u.png" /></a></li>
+                <li><a href="https://www.instagram.com/sipnscreen?igsh=OWwzbXJnbTgwMW8=" target="_blank"><img src="/styles/assets/img/i.png" /></a></li>
+                <li><a href="https://www.facebook.com/profile.php?id=61565845657820&mibextid=ZbWKwL" target="_blank"><img src="/styles/assets/img/f.png" /></a></li>
               </ul>
             </div>
           </div>

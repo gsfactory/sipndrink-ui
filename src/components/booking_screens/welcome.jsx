@@ -1,5 +1,7 @@
 
 function Welcome(props) {
+    const today = new Date().toISOString().split('T')[0];
+
     return ( 
         <div className="form-step firstwel active">
             <h3>Welcome</h3>
@@ -8,6 +10,7 @@ function Welcome(props) {
                 <label>Pick Your Date</label>
                 <input type="date" name="birth-date" id="birth-date"
                     defaultValue={props.bookingDate}
+                    min={today}
                     onChange={(e) => props.setBookingDate(e.target.value)}
                 />
             </div>
