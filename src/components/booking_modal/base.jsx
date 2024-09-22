@@ -174,11 +174,11 @@ function BaseModal(props) {
 
     return ( 
         <div id="myModal" className="modal fade" role="dialog" ref={modalRef}>
-            <button type="button" class="close" data-dismiss="modal">&times;</button>
-            <div class="modal-dialog">
-            <div class="modal-content">   
-            <div class="modal-body">
-                <div class="welcomearea">
+            <button type="button" className="close" data-dismiss="modal">&times;</button>
+            <div className="modal-dialog">
+            <div className="modal-content">   
+            <div className="modal-body">
+                <div className="welcomearea">
                 <div className="row">
                 <div className="col-md-9 col-sm-12">
                     <div className="welcometext">

@@ -72,7 +72,7 @@ class ApiClient {
 
     async getServiceDetails() {
         let { data } = await axios.get(
-            '/service-details?populate=*'
+            '/service-details?pagination[pageSize]=1000&populate=*'
         );
         return data;
     }

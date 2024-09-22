@@ -43,7 +43,6 @@ export default function Home(props) {
 }
 
 export async function getServerSideProps(ctx){
-  console.log();
   const [theatres, services, serviceDetails] = await Promise.all([
       api_client.getTheatres(),
       api_client.getServices(),

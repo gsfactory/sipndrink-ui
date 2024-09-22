@@ -106,7 +106,7 @@ function CustomerDetailsFinalScreen(props) {
         </div>
         <div className="applynote">
             <div className="input-group">
-                <div class="row align-items-center">
+                <div className="row align-items-center">
                     <div className='col-auto'>
                         <input
                             type="checkbox"
