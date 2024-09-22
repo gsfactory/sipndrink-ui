@@ -1,23 +1,14 @@
-import api_client from '@/components/api/api_client';
-import BaseModal from '@/components/booking_modal/base';
-import Banner2 from '@/components/static/banner2';
-import Banner3 from '@/components/static/banner3';
-import Banner4 from '@/components/static/banner4';
-import Banner5 from '@/components/static/banner5';
 import Header from '@/components/layouts/header';
 import Footer from '@/components/layouts/footer';
 import SEO from '@/components/seo/seo';
-import TopVideo from '@/components/static/top_video';
+import api_client from '@/components/api/api_client';
 
-export default function Home(props) {
-  // console.log('modal', props.serviceMap);
-    console.log('booking data', props);
-
+export default function PrivacyPolicy(props) {
   return (
     <>
       <SEO 
-        title="Welcome to SipnScreen for booking private theaters and enjoy your celebration | SipnScreen"
-        description="Welcome to SipnScreen for booking private theaters and enjoy your celebration"
+        title="Refund Policy | SipnScreen"
+        description="Refund policy of SipnScreen"
       />
 
       <BaseModal 
@@ -27,18 +18,25 @@ export default function Home(props) {
       />
 
       <Header />
-      {/* <Banner /> */}
-      <TopVideo />
 
-      <main id="main">
-          <Banner2 />
-          <Banner3 />
-          <Banner4 />
-          <Banner5 />
-          
-      </main>
+      <div className="container">
+        <div className="row">
+            <div className="col-10 mx-auto p-4 m-4">
+                <div className="content p-4 m-4 border rounded">
+                        <h1 className='p-4'>Refund Policy</h1>
 
-      <Footer />
+                        <ul>
+                            <li>To confirm your booking, an advance payment of ₹1,000 is required. If you cancel your reservation at least 48 hours prior to the scheduled time, a partial refund of ₹750 will be processed. </li>
+                            <li>Please note that cancellations made within 48 hours of the booking time are not eligible for a refund. Refunds are also not available for no-shows or late arrivals. </li>
+                            <li>To cancel your booking, kindly reach out to us via call or WhatsApp at +91 94925 00886 as soon as possible. Refunds will be processed within 7 business days from the receipt of your cancellation request. </li>
+                            <li>Should you have any questions or concerns regarding our refund policy, feel free to contact us. We are happy to assist!</li>
+                        </ul>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    <Footer />
     </>
   )
 }

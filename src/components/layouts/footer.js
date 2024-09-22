@@ -20,7 +20,12 @@ function Footer() {
               <ul>
                 <li><a href="#"><i className="fa fa-phone"></i> +91 9492500886</a></li>
                 <li><a href="#"><i className="fa fa-envelope"></i> sipnscreen@gmail.com</a></li>
-                <li><a href="#"><i className="fa fa-map-marker"></i> Hyderabad</a></li>
+                <li><a href="https://shorturl.at/PYwPw"><i className="fa fa-map-marker"></i> 
+                    Hyderabad - 49
+                </a></li>
+                <li><a href="#"><i className="fa fa-map-marker"></i> 
+                3rd floor, Sai Krishna Capital, Gopal Nagar, Hafeezpet, Hyderabad- 49
+                </a></li>
               </ul>
             </div>
             <div className="col-lg-4 col-md-12">

@@ -117,9 +117,9 @@ function CustomerDetailsFinalScreen(props) {
                     </div>
                     <div className='col' style={{ marginLeft: '-20px' }}>
                         <p className="mb-0">
-                            I accept the 
-                            <a href="/privacy-policy" target="_blank" className="text-primary"> Privacy Policy </a>
-                            of the Website</p>
+                        I accept the 
+                        <a href="/privacy-policy" target="_blank" className="text-primary"> Terms and conditions and Privacy Policy </a> of Sip n Screen
+                        </p>
                     </div>
                 </div>
                 {policyError && 
@@ -134,7 +134,9 @@ function CustomerDetailsFinalScreen(props) {
             <a className="btn btn-prev"
                 onClick={props.prevStep}>Previous</a>
 
-            <input value="Proceed to pay Advance" type="button" name="complete" className="btn" 
+            <input value="Proceed to pay Advance" type="button" name="complete" 
+                className="btn" 
+                disabled={false}
                 onClick={initiateBooking}
             />
         </div>
