@@ -2,7 +2,7 @@ import { useState } from "react";
 import MyImage from "../utils/image";
 
 function Cakes(props) {
-    console.log('cakes', props);
+    // console.log('cakes', props);
 
     const s3Basepath = 'https://s3.amazonaws.com/client.limelox.com/sipndrink';
 
@@ -22,7 +22,8 @@ function Cakes(props) {
         <div className="slider_area left-section ">
             
         <p className="note-detls text-white text-left">
-        Images are for demonstration purposes only. Actual cake may look different - Cake size- 1 kg 
+        All Cakes are Eggless. Images are for demonstration purposes only. Actual cake may look different - Cake size- 1 kg
+
             </p>
 
             <div className="row box-container">
@@ -31,9 +32,6 @@ function Cakes(props) {
                 .map(cake => (
                     <div className="col-md-4 col-sm-12" key={cake.id}>
                         <div className={`imagearea ${props.cakeIds.includes(cake.id) ? 'active' : ''}`}>
-                        {/* <img 
-                            onClick={() => handleToggle(cake.id)}
-                            src={cake.photo.data[0].attributes.url.startsWith('/') ? `${process.env.NEXT_PUBLIC_API_URL}${cake.photo.data[0].attributes.url}` : `${s3Basepath}/${cake.photo.data[0].attributes.hash}${cake.photo.data[0].attributes.ext}`} /> */}
                         <MyImage 
                             onClick={() => handleToggle(cake.id)}
                             src={cake.photo.data[0].attributes.url.startsWith('/') ? `${process.env.NEXT_PUBLIC_API_URL}${cake.photo.data[0].attributes.url}` : `${s3Basepath}/${cake.photo.data[0].attributes.hash}${cake.photo.data[0].attributes.ext}`} />

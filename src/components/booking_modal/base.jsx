@@ -45,7 +45,6 @@ function BaseModal(props) {
 
         const modalElement = modalRef.current;
 
-        console.log('debug 1');
         // Add jQuery event listener for modal close event
         $(modalRef.current).on('hidden.bs.modal', function () {
             console.log('Modal closed');
@@ -329,6 +328,7 @@ function BaseModal(props) {
                             bookingDate={bookingDate}
                             numPersons={numPersons}
                             timeSlotId={timeSlot}
+                            theaterTimeSlots={theaterTimeSlots}
                         />
                     </div>
 

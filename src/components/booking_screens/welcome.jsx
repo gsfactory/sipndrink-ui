@@ -5,7 +5,11 @@ function Welcome(props) {
     return ( 
         <div className="form-step firstwel active">
             <h3>Welcome</h3>
-            <p>Moments and movies of togetherness with Sip N Screen.</p>
+            <p>
+                Moments and movies of togetherness with <br/>Sip N Screen.
+                <br/><br/>
+                Call us at given number for any customised booking
+            </p>
             <div className="input-group">
                 <label>Pick Your Date</label>
                 <input type="date" name="birth-date" id="birth-date"

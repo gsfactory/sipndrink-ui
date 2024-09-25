@@ -29,25 +29,16 @@ function Time(props) {
                                         </li>
                                     })
                                 }
-                                {/* <li>₹{props.theater.attributes.pricing_per_slot} for {props.theater.attributes.num_seats} or less people<br /> (Rs {props.theater.attributes.extra_seat_cost} per extra person)</li>
-                                <li> Mega 150 inch enhanced 4k Video. Powerful 1000W Dolby atmos sound system (In-wall speakers). Ideal for family and friends.</li>
-                                <li> Food & Beverages can be ordered at the theatre.</li> */}
-                                {/* {props.theater.attributes.description} */}
                             </ul>
                         </div>
                     </div>
                     <div className="col-md-6">
                         <div className="input-group">
                             <label>Book your slot</label>
-                            {/* <input type="time" name="start-date[]" id="start-date"/> */}
-                            {/* theaterTimeSlots */}
                             <select 
                                 value={props.timeSlot || props.theaterTimeSlots[0].id}
                                 onChange={(e) => props.setTimeSlot(e.target.value)}
                             >
-                                {/* <option>
-                                    Select a timeslot
-                                </option> */}
                                 {props.theaterTimeSlots.map((item) => (
                                     <option 
                                     key={item.id} 

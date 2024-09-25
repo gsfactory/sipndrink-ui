@@ -43,9 +43,9 @@ function Banner2() {
           className="img-fluid" // Optional, for extra Bootstrap styling
         />
         <div className="section-header">
-          <h5>The Perfect Date Night</h5>
+          <h5>The Perfect Family Night</h5>
           <p>
-          Make date night special with a cozy dinner and a private screening. Sip handcrafted drinks and enjoy a film that’s just for the two of you , an unforgettable experience wrapped in cozy vibes, ambient lighting, and cinematic charm. 
+          Make family night special with a cozy dinner and a private screening. Sip handcrafted drinks while the whole family enjoys a film just for you, creating an unforgettable experience filled with cozy vibes, warm lighting, and cinematic charm for all ages to enjoy together.
           </p>
         </div>
       </div>

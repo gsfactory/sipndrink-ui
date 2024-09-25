@@ -20,7 +20,7 @@ export default function PrivacyPolicy(props) {
 
       <Header />
 
-      <div className="container">
+      <div className="container police">
         <div className="row">
             <div className="col-10 mx-auto p-4 m-4">
                 <div className="content p-4 m-4 border rounded">

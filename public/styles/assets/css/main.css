@@ -2797,3 +2797,12 @@ button.close {
 .welcomearea {
   margin-left: 15px;
 }
+
+.police p {
+  text-align: left;
+  max-width: 100%;
+}
+.police h2 {
+  font-weight: bold;
+  font-size: 18px;
+}

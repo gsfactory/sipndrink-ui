@@ -11,7 +11,7 @@ function Footer() {
                 <li><a href="/privacy-policy">Privacy Policy</a></li>
                 <li>
                 <a 
-                  href="https://s3.amazonaws.com/client.limelox.com/sipndrink/home/final_menu.pdf" 
+                  href="/final_menu.pdf" 
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -26,10 +26,15 @@ function Footer() {
             <div className="col-lg-4 col-md-4 footer-links">
               <h4>Contact Us</h4>
               <ul>
-                <li><a href="#"><i className="fa fa-phone"></i> +91 9492500886</a></li>
-                <li><a href="#"><i className="fa fa-envelope"></i> sipnscreen@gmail.com</a></li>
-                <li><a href="https://maps.app.goo.gl/fS4BmWx5bvXVjUL69" target="_blank"><i className="fa fa-map-marker"></i> 
+                <li className="text-dark"><i className="fa fa-phone"></i> +91 9492500886</li>
+                <li className="text-dark"><i className="fa fa-envelope"></i> sipnscreen@gmail.com</li>
+                <li className="text-dark"><i className="fa fa-map-marker"></i> 
+                <div className="pl-2">
                 3rd floor, Sai Krishna Capital, Gopal Nagar, Hafeezpet, Hyderabad- 49
+                </div>
+                </li>
+                <li><a href="https://maps.app.goo.gl/fS4BmWx5bvXVjUL69" target="_blank"><i className="fa fa-map-marker"></i> 
+                Google Map - Click to Visit us
                 </a></li>
               </ul>
             </div>

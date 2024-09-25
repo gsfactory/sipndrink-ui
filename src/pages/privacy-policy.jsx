@@ -25,7 +25,7 @@ export default function PrivacyPolicy(props) {
             <div class="row justify-content-center">
       <div class="col-10">
         <div class="content p-3 border rounded">
-    <div>
+    <div className="police">
       
       <h1 className='p-4'>Terms & Conditions and Privacy Policy</h1>
 
@@ -37,6 +37,10 @@ export default function PrivacyPolicy(props) {
         <li>Outside food is strictly prohibited, considering the sensitivity of carpets and recliners inside the Theatres.</li>
         <li>We charge full for children above 7 years and half for those who are between 3-7 years</li>
         <li>Rights of admission is reserved by the Management.</li>
+        <li>In case of any damages, the customer is liable to bear the costs of the same.</li>
+        <li>For the safety of all, any kind of fire, matches, smoking, birthday candles etc are strictly prohibited  to be used by customers.</li>
+        <li>All decorations are given on rental basis only and can’t be destroyed or taken away by customers.</li>
+
       </ol>
 
       <p>
