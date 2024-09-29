@@ -15,6 +15,21 @@
   font-family: DarkerGrotesque;
   src: url(./../fonts/DarkerGrotesque-Regular.ttf);
 }
+
+@media screen and (min-device-width:1960px) and (max-device-width: 1860px) { 
+  button.close {
+    background: #fac601;
+    opacity: 1;
+    padding: 10px;
+    position: fixed;
+    right: 18.2%;
+    top: 3.6%;
+    color: #000;
+    z-index: 9999;
+}/* STYLES HERE */
+
+}
+
 .centerbtn.onlythiscenter {
   width: 90%;
 }
@@ -1405,7 +1420,7 @@ button.close {
   padding: 10px;
   position: fixed;
   right: 10%;
-  top: 2%;
+  top:5%;
   color: #000;
   z-index: 9999;
 }
@@ -1993,7 +2008,7 @@ color:#fff;
 }
 .slider_area .col-md-4 {
 /*padding-left: 5px;*/
-padding-right: 5px;
+/**/
 }
 .btn {
   padding: 10px;
@@ -2026,7 +2041,7 @@ border-radius: 5px !important;
 padding: 10px 15px;
 }
 .btn-prev {
-  background-color: #777;
+  background-color: #fff;
   color: #fff;
 }
 
@@ -2082,9 +2097,18 @@ textarea {
 text-align: center;
 }
 .welcometext .firstwel {
-max-width: 300px;
+max-width: 340px;
 margin: 30px auto;
 
+}
+.rigrt-boxwelcome .small {
+  max-height: 150px;
+  overflow-y: scroll;
+  min-height: 80px;
+}
+input.btn {
+  background: green;
+  color: #fff;
 }
 .rigrt-boxwelcome ul li {
 display: flex;
@@ -2097,7 +2121,7 @@ padding:0;
 padding:20px 40px 20px 20px;
 border-radius: 10px;
 position: relative;
-background-image: url(https://s3.amazonaws.com/client.limelox.com/sipndrink/home/modal-background.jpg);
+background-image: url(https://s3.amazonaws.com/client.limelox.com/sipndrink/home/modal-background.png);
 background-repeat:no-repeat;
 background-position: center;
 height:600px;
@@ -2273,14 +2297,19 @@ font-weight: normal;
 color:#fff;
 }
 .btn-group .text-danger {
-  background: #fff;
-  padding: 15px;
-  margin: 0px !important;
-  line-height: 18px;
-  height: auto;
-  border-radius: 5px;
-  font-weight: bold;
+  margin: 10px 0 !important;
+  display: block;
+  float: left;
+  POSITION: ABSOLUTE;
+  Z-INDEX: 999999999;
+  BOTTOM:-10PX;
+  BACKGROUND: #FF0000;
+  LEFT: 20%;
+  RIGHT: 20%;
+  MAX-WIDTH: 60%;
+  color:#FFF !important;
 }
+
 .cakes input[type=checkbox]{
 height: 0;
 width: 0;
@@ -2441,6 +2470,7 @@ object-fit: cover;
 font-size:24px;
 margin: 10px 0 5px;
 color:#000;
+margin-bottom: 0px !important;
 }
 span.noper {
 color: #000;
@@ -2597,8 +2627,11 @@ h2.sss {
     padding: 0px !important;
 }
   .btn-group {
-    display: ruby;
+    display: flex;
   }
+  a.btn.btn-next {
+    right: 0;
+}
   .rigrt-boxwelcome::before {
     background-color: #fff;
     width: 100%;
@@ -2625,7 +2658,7 @@ h2.sss {
 .box img {
   max-width: 100%;
   height: auto;
-  max-height: 150px;
+  max-height: 130px;
   object-fit: cover;
 }
 ul.header-right {
@@ -2666,6 +2699,12 @@ color: #FAC601;
 }
 .box h3{
   color:#000;
+  font-weight: bold;
+  font-size:18px;
+  margin-bottom: 0 !important;
+}
+a.btn.btn-next.booknoe {
+  padding: 6px 20px;
 }
 .left-section {
   height: 350px;
@@ -2748,7 +2787,7 @@ button.close {
   Z-INDEX: 99999;
   RIGHT: 0;
   TOP: 0;
-  BACKGROUND: #000;
+  BACKGROUND: #fac601;
   PADDING: 10PX;
   OPACITY: 10;
   COLOR: #FFF;
@@ -2776,6 +2815,7 @@ button.close {
   margin: 10px 0 !important;
   display: block;
   float: left;
+  bottom: 92px;
 }
 .btn-group {
   text-align: center;
@@ -2786,6 +2826,17 @@ button.close {
   margin-left: 0 !important;
 }
 .welcomearea>.row>.col-md-3 {
+  padding-left: 15px;
+}
+.btn-group a.btn.btn-prev {
+  float: left;
+  margin-right: 5px;
+}
+a.bookbtn{
+  margin: 9px;  
+}
+.welcomearea>.row>.col-md-3, .welcomearea>.row>.col-md-9 {
+  padding-right: 15px;
   padding-left: 15px;
 }
 }
@@ -2805,4 +2856,7 @@ button.close {
 .police h2 {
   font-weight: bold;
   font-size: 18px;
+}
+.form-step h3 {
+  margin-bottom: 30px;
 }
