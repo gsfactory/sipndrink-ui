@@ -27,7 +27,7 @@ function Footer() {
               <h4>Contact Us</h4>
               <ul>
                 <li className="text-dark"><i className="fa fa-phone"></i> +91 9492500886</li>
-                <li className="text-dark"><i className="fa fa-envelope"></i> sipnscreen@gmail.com</li>
+                <li className="text-dark"><i className="fa fa-envelope"></i> admin@sipnscreen.com</li>
                 <li className="text-dark"><i className="fa fa-map-marker"></i> 
                 <div className="pl-2">
                 3rd floor, Sai Krishna Capital, Gopal Nagar, Hafeezpet, Hyderabad- 49
