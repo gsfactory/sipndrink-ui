@@ -105,7 +105,7 @@ export default function PrivacyPolicy(props) {
       <p>Manager - Sip n Screen,  </p>
       <p>3rd floor, Sai Krishna Capital, Gopal Nagar, Hafeezpet, Hyderabad, Telangana- 500049</p>
       <p>Call or WhatsApp at +91 94925 00886</p>
-
+      <p></p>
       <p>Legal Entity Name: H & S Enterprises</p>
       <p>GST Number: 36AAQFH9091L1ZI</p>
       <p>PAN Details: AAQFH9091L</p>

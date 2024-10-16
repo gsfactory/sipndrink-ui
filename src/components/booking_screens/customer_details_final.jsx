@@ -1,68 +1,45 @@
-import { useRouter } from 'next/router';
-import api_client from "../api/api_client";
-import { useData } from '../../context/sip_context';
 import { useState } from 'react';
+import RazorpayButton from '../razorpay/rz_btn';
 
 function CustomerDetailsFinalScreen(props) {
-    console.log('final screen', props);
-    const router = useRouter();
-    const { setData } = useData();
+    // console.log('final screen', props);
     const [error, setError] = useState("");
     const [policyError, setPolicyError] = useState("");
 
     const [isChecked, setIsChecked] = useState(false);
+
+    const booking = {
+        "date": props.bookingDate,
+        "extra_seat": props.numPersons > props.theater.attributes.num_seats ? props.numPersons - props.theater.attributes.num_seats : 0,
+        "total_price": props.pricing,
+        "price_paid": props.theater.attributes.partial_payment_amount,
+        "customer_email": props.email,
+        "customer_phone": props.mobile,
+        "customer_name": props.name,
+        "theatre": props.theater.id,
+        "timeslot": props.timeSlotId,
+        "total_seats_booked": props.numPersons,
+        "first_name": props.firstName,
+        "second_name": props.secondName
+    };
+  
+    const services=[...props.decorationIds, ...props.cakeIds, ...props.flowerIds, ...props.extraDecoIds, ...props.photoIds];
+
     const handleCheckboxChange = (event) => {
         setIsChecked(event.target.checked);
     };
 
-    const initiateBooking = async () => {
+    const isAllInputOk = async () => {
         if (!props.mobile || !props.name || !props.email) {
             setError("Please fill all details name/number/email");
-            return;
+            return false;
         }
 
         if (!isChecked) {
             setPolicyError("You need to accept the policy");
-            return;
+            return false;
         }
-        const booking = {
-              "date": props.bookingDate,
-              "extra_seat": props.numPersons > props.theater.attributes.num_seats ? props.numPersons - props.theater.attributes.num_seats : 0,
-              "total_price": props.pricing,
-              "price_paid": props.theater.attributes.partial_payment_amount,
-              "customer_email": props.email,
-              "customer_phone": props.mobile,
-              "customer_name": props.name,
-              "theatre": props.theater.id,
-              "timeslot": props.timeSlotId,
-              "total_seats_booked": props.numPersons,
-              "first_name": props.firstName,
-              "second_name": props.secondName
-        };
-        
-        const services=[...props.decorationIds, ...props.cakeIds, ...props.flowerIds, ...props.extraDecoIds, ...props.photoIds];
-
-        // console.log('booking', booking);
-        // console.log('services', services);
-        try {
-        const result = await api_client.startBooking(booking, services);
-
-        setData({
-            result: result,
-            theater: props.theater,
-            services: services,
-            booking: booking,
-            serviceMap: props.serviceMap,
-            mobile: props.mobile,
-            email: props.email,
-            name: props.name
-        });
-        // console.log('booking res', result);
-        } catch (error) {
-            console.log(api_client.getErrorString(error));
-        }
-
-        router.push('/thankyou');
+        return true;
     }
 
     return (  
@@ -134,11 +111,21 @@ function CustomerDetailsFinalScreen(props) {
             <a className="btn btn-prev"
                 onClick={props.prevStep}>Previous</a>
 
-            <input value="Proceed to pay Advance" type="button" name="complete" 
+            <RazorpayButton 
+                booking={booking}
+                services={services}
+                isAllInputOk={isAllInputOk}
+                theater={props.theater}
+                serviceMap={props.serviceMap}
+                mobile={props.mobile}
+                email={props.email}
+                name={props.name}
+            />
+            {/* <input value="Proceed to pay Advance" type="button" name="complete" 
                 className="btn" 
                 disabled={false}
                 onClick={initiateBooking}
-            />
+            /> */}
         </div>
     </div>
     );

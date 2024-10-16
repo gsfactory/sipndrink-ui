@@ -6,7 +6,7 @@ module.exports = {
     NEXT_PUBLIC_API_URL:
       process.env.NEXT_PUBLIC_API_URL || "http://127.0.0.1:1337",
     NEXTAUTH_URL: process.env.NEXTAUTH_URL || "http://127.0.0.1:3000",
-    RAZORPAY_KEY: process.env.RAZORPAY_KEY,
+    RAZORPAY_KEY: process.env.RAZORPAY_KEY || "rzp_test_ECZaQHR5VmmsJg",
     GA_CODE: 'UA-XXXXXXXXX-X',
     CLARITY_ID: 'test'
   },

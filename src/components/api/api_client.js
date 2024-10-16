@@ -109,9 +109,6 @@ class ApiClient {
         //add service details in bookings
         await this.addBookingServices(data.id, services);
 
-        // initiate payment order
-        await this.initiatePayment(data.id);
-
         return data;
     }
 
@@ -144,16 +141,51 @@ class ApiClient {
         return results;
     }
 
-    async initiatePayment(bookingId) {
-        console.log('Initiating payment for booking', bookingId);
+    async initiatePayment(inr) {
+        console.log('Initiating payment for rs', inr);
         try {
             let { data } = await axios.post(
                 `/payments`, {
                 data: {
-                    booking: bookingId,
+                    inr: inr,
                 }
                 }
                 );
+            return data;
+        } catch (error) {
+            console.log(error);
+            return null
+        }
+    }
+
+    async finalizePayment(args) {
+        console.log('finalizePayment', args);
+        try {
+            let { data } = await axios.put(
+                `/payments/finalize`, {
+                    data: {
+                        pg_payment_id: args.razorpay_payment_id,
+                        pg_order_id: args.razorpay_order_id,
+                        pg_signature: args.razorpay_signature
+                    }
+                }
+            );
+            return data;
+        } catch (error) {
+            console.log(error);
+            return null
+        }
+    }
+
+    async updatePayment(paymentId, bookingId) {
+        try {
+            let { data } = await axios.put(
+                `/payments/${paymentId}`, {
+                    data: {
+                        booking: bookingId
+                    }
+                }
+            );
             return data;
         } catch (error) {
             console.log(error);

@@ -1,7 +1,12 @@
+import log from '../utils/log';
+
 function Time(props) {
-    console.log('time', props);
+    log.debug('Here are my logs debug', props);
+    // console.log('time', );
 
     const desc = props.theater.attributes.description.split("\n");
+    const availableSlotId = props.theaterTimeSlots.find(item => props.slotsAvailability[props.theater.id]['availability'][item.id])?.id;
+    console.log("availableSlotId", availableSlotId);
 
     const s3Basepath = 'https://s3.amazonaws.com/client.limelox.com/sipndrink';
     const startNumber = props.theater.attributes.min_num_people == props.theater.attributes.num_seats ? props.theater.attributes.num_seats : 1;
@@ -36,7 +41,7 @@ function Time(props) {
                         <div className="input-group">
                             <label>Book your slot</label>
                             <select 
-                                value={props.timeSlot || props.theaterTimeSlots[0].id}
+                                value={availableSlotId}
                                 onChange={(e) => props.setTimeSlot(e.target.value)}
                             >
                                 {props.theaterTimeSlots.map((item) => (
