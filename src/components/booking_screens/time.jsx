@@ -28,11 +28,14 @@ function Time(props) {
                             <h2>{props.theater.attributes.name}</h2>
                             <ul>
                                 {
-                                    desc.map((item, index) => {
-                                        return <li key={index}>
-                                            {item}
-                                        </li>
-                                    })
+                                    // desc.map((item, index) => {
+                                    //     return <li key={index}>
+                                    //         {item}
+                                    //     </li>
+                                    // })
+                                    desc.map((item, index) => (
+                                        <li key={index} dangerouslySetInnerHTML={{ __html: item }} />
+                                      ))
                                 }
                             </ul>
                         </div>

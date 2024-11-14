@@ -112,6 +112,11 @@ function ThankYou(props) {
                     </tr>
                   })
             }
+
+            <tr>
+                <td>Discount</td>
+                <td>{data.booking.discount}</td>
+            </tr>
             <tr className='table-primary'>
                 <td>Total Price</td>
                 <td>{data.booking.total_price}</td>

@@ -21,6 +21,7 @@ function BaseModal(props) {
     const [theaterTimeSlots, setTheaterTimeSlots] = useState(null);
     const [slotsAvailability, setSlotsAvailability] = useState([]);
     const [pricing, setPricing] = useState(0);//props.data.pricing_per_slot);
+    const [discount, setDiscount] = useState(0);
 
     const [bookingDate, setBookingDate] = useState(getCurrentDate());
     const [timeSlot, setTimeSlot] = useState(null);
@@ -56,7 +57,7 @@ function BaseModal(props) {
         return () => {
             $(modalRef.current).off('hidden.bs.modal');
         };
-    }, [decorationIds, cakeIds, extraDecoIds, flowerIds, photoIds, theater, numPersons, timeSlot]);
+    }, [decorationIds, cakeIds, extraDecoIds, flowerIds, photoIds, theater, numPersons, timeSlot, discount]);
 
     const clearState = () => {
         setStep(1);
@@ -86,6 +87,11 @@ function BaseModal(props) {
     const prevStep = () => {
         setStep(prev => prev - 1)
     };
+
+    const handleCoupon = async (discountPercent) => {
+        const totalDiscount = theater.attributes.pricing_per_slot * discountPercent / 100;
+        setDiscount(totalDiscount);
+    }
 
     // helps in tracking which items(decoration, cake, flowers etc) are selected.
     const handleItemSelection = (id, serviceName, isMultipleAllowed=true) => {
@@ -136,7 +142,7 @@ function BaseModal(props) {
         let totalPrice = 0;
         if (theater) {
             // console.log(theater);
-            totalPrice = theater.attributes.pricing_per_slot;
+            totalPrice = theater.attributes.pricing_per_slot - discount;
             
             const extra_seats = numPersons > theater.attributes.num_seats ? numPersons-theater.attributes.num_seats : 0;
             totalPrice += extra_seats * theater.attributes.extra_seat_cost;
@@ -282,6 +288,8 @@ function BaseModal(props) {
                             nextStep={nextStep}
                             prevStep={prevStep}
                             pricing={pricing}
+                            discount={discount}
+                            handleCoupon={handleCoupon}
                             theater={theater}
                             theaters={props.theatres.data}
 
@@ -315,6 +323,7 @@ function BaseModal(props) {
                         <PaymentSummary 
                             pricing={pricing}
                             theater={theater}
+                            discount={discount}
                             businessDetails={props.businessDetails}
 
                             theaters={props.theatres.data}

@@ -79,9 +79,15 @@ function Theaters(props) {
                             <h3>{theater.attributes.name}</h3>
                             
                             {theater.attributes.min_num_people == theater.attributes.num_seats ?
-                                <p>₹{theater.attributes.pricing_per_slot} for {theater.attributes.num_seats}<br /> (extra person not allowed)</p>
+                                theater.attributes.initial_price ? 
+                                    <p><s>₹{theater.attributes.initial_price}</s> ₹{theater.attributes.pricing_per_slot} for {theater.attributes.num_seats}<br /> (extra person not allowed)</p>
+                                    :
+                                    <p>₹{theater.attributes.pricing_per_slot} for {theater.attributes.num_seats}<br /> (extra person not allowed)</p>
                             :
-                                <p>₹{theater.attributes.pricing_per_slot} for {theater.attributes.num_seats} or less people<br /> (Rs {theater.attributes.extra_seat_cost} per extra person)</p>
+                                theater.attributes.initial_price ? 
+                                    <p><s>₹{theater.attributes.initial_price}</s> ₹{theater.attributes.pricing_per_slot} for {theater.attributes.num_seats} or less people<br /> (Rs {theater.attributes.extra_seat_cost} per extra person)</p>
+                                    :
+                                    <p>₹{theater.attributes.pricing_per_slot} for {theater.attributes.num_seats} or less people<br /> (Rs {theater.attributes.extra_seat_cost} per extra person)</p>
                             }
 
                             <span className={`${props.slotsAvailability[theater.id]?.num_available === 0 ? 'active' : ""}`} >

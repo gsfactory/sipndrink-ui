@@ -102,6 +102,14 @@ class ApiClient {
         // return [];
     }
 
+    async getCoupon(name) {
+        let { data } = await axios.get(
+            `/coupons?filters[name][$eq]=${name}`
+        );
+        return data;
+        // return [];
+    }
+
 
     async startBooking(booking, services) {
         const { data } = await this.addBookingOrder(booking, services);

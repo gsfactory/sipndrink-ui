@@ -11,7 +11,7 @@ function Footer() {
                 <li><a href="/privacy-policy">Privacy Policy</a></li>
                 <li>
                 <a 
-                  href="/final_menu.pdf" 
+                  href="/menu" 
                   target="_blank"
                   rel="noopener noreferrer"
                 >

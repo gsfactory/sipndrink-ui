@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import RazorpayButton from '../razorpay/rz_btn';
+import api_client from '../api/api_client';
 
 function CustomerDetailsFinalScreen(props) {
     // console.log('final screen', props);
@@ -7,6 +8,7 @@ function CustomerDetailsFinalScreen(props) {
     const [policyError, setPolicyError] = useState("");
 
     const [isChecked, setIsChecked] = useState(false);
+    const [coupon, setCoupon] = useState("");
 
     const booking = {
         "date": props.bookingDate,
@@ -20,11 +22,30 @@ function CustomerDetailsFinalScreen(props) {
         "timeslot": props.timeSlotId,
         "total_seats_booked": props.numPersons,
         "first_name": props.firstName,
-        "second_name": props.secondName
+        "second_name": props.secondName,
+        "discount": props.discount,
     };
   
     const services=[...props.decorationIds, ...props.cakeIds, ...props.flowerIds, ...props.extraDecoIds, ...props.photoIds];
 
+    const handleCoupon = (event) => {
+        setCoupon(event.target.value);
+    }
+    const fetchCouponDetail = async () => {
+        setError("");
+
+        console.log('checking coupon', coupon);
+        if (!coupon) {
+            return;
+        }
+        const res = await api_client.getCoupon(coupon);
+        if (res?.data?.length > 0) {
+            console.log('discount of ', res.data[0].attributes.discount);
+            props.handleCoupon(res.data[0].attributes.discount);
+        } else {
+            setError('Invalid coupon code');
+        }
+    }
     const handleCheckboxChange = (event) => {
         setIsChecked(event.target.checked);
     };
@@ -71,8 +92,8 @@ function CustomerDetailsFinalScreen(props) {
             <p>We collect an advance amount of ₹ {props.theater.attributes.partial_payment_amount} to book the slot. Remaining bill will be collected at the time of check-out.</p>
             <div className="input-group">
                 <div className="input-box">
-                    <input id="github" name="email" type="email" placeholder="Enter Coupon Code" />
-                    <input type="submit" value="APPLY" name="apply" />
+                    <input id="github" name="coupon" type="text" placeholder="Enter Coupon Code" onChange={handleCoupon} />
+                    <input type="button" value="APPLY" name="apply" onClick={fetchCouponDetail} />
                 </div>
                 {error && 
                     <div className="text-danger">

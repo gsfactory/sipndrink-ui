@@ -44,6 +44,7 @@ function PaymentSummary(props) {
             <h3>Add-ons</h3>
             <div className="small">
             <ul>
+              <li><i className="fa fa-certificate" aria-hidden="true"></i> Discount: {props.discount}</li>
               <li><i className="fa fa-certificate" aria-hidden="true"></i> Extra-Seats: {extra_seats}</li>
 
               {props.serviceMap['decorations'].map((cake) => {
